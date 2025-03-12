@@ -1,0 +1,916 @@
+{
+    "imgs": [
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1820-16"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1821-23"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1821-58"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1823-02"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1823-59"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1824-34"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1825-09"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1825-41"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1826-07"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1827-06"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1827-57"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1834-24"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1835-21"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1835-53"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1836-22"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1836-56"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1837-39"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1838-08"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/animals/JH_2023-09-14-1839-58"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-14-1936-05"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-14-1944-37"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-14-1948-37"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-14-1951-15"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1038-36"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1043-08"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1050-21"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1052-01"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1057-14"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1102-15"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1103-14"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1108-11"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1109-30"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1110-47"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1113-15"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1144-37"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1504-15"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1504-51"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1506-17"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1507-07"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1508-16"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1510-48"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1511-52"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1513-03"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1516-15"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1517-46"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1518-26"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1519-16"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1532-19"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1537-20"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1538-34"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1542-21"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1545-23"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1549-43"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/art_work/PJC_2023-09-15-1551-41"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-14-1738-42"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-15-2228-28"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-15-2231-44"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-15-2233-10"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-15-2234-25"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-15-2235-10"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-15-2236-24"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-15-2237-43"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-16-1413-26"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-16-1416-37"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-16-1417-50"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-16-1418-51"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-16-1419-44"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-16-1422-52"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-16-1426-48"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-16-1427-42"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-16-1429-15"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-16-1432-38"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-16-1434-00"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-16-1434-57"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_city_view/YAN_2023-09-16-1435-56"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1536-24"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1537-53"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1538-57"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1540-36"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1542-07"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1542-58"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1543-28"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1545-22"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1548-18"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1551-32"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1553-04"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1554-32"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1555-39"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1559-46"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1600-30"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1602-04"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1602-59"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1604-13"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1606-00"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1606-54"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1608-28"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/building_countryside_view/YAN_2023-09-16-1609-26"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_full_body/SY_2023-09-15-1923-29"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_full_body/SY_2023-09-15-1924-45"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_full_body/SY_2023-09-15-1925-32"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_full_body/SY_2023-09-15-1931-25"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_full_body/SY_2023-09-15-1932-09"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_full_body/SY_2023-09-15-1934-12"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_full_body/SY_2023-09-15-1935-03"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_full_body/SY_2023-09-15-1936-03"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_full_body/SY_2023-09-15-1942-17"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_full_body/SY_2023-09-15-1945-08"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_head/SY_2023-09-15-1732-57"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_head/SY_2023-09-15-1735-10"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_head/SY_2023-09-15-1737-06"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_head/SY_2023-09-15-1738-25"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_head/SY_2023-09-15-1739-50"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_head/SY_2023-09-15-1741-15"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_head/SY_2023-09-15-1742-27"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_head/SY_2023-09-15-1744-24"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_head/SY_2023-09-15-1745-30"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_head/SY_2023-09-15-1747-11"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_upper_body/SY_2023-09-15-1751-29"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_upper_body/SY_2023-09-15-1911-33"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_upper_body/SY_2023-09-15-1912-30"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_upper_body/SY_2023-09-15-1913-58"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_upper_body/SY_2023-09-15-1914-43"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_upper_body/SY_2023-09-15-1916-29"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_upper_body/SY_2023-09-15-1917-38"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_upper_body/SY_2023-09-15-1918-54"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_upper_body/SY_2023-09-15-1920-15"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/human_upper_body/SY_2023-09-15-1921-41"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1621-49"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1627-31"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1629-37"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1631-25"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1633-46"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1641-56"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1643-38"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1646-01"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1649-19"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1652-06"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1656-05"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1658-19"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1659-51"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1705-47"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1709-24"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1711-35"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1713-49"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1720-25"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1723-08"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/interior_design/SY_2023-09-15-1727-27"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-14-1912-53"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-14-1914-55"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-14-1916-54"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-14-1922-56"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-14-1925-41"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-14-1927-49"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-15-1554-46"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-15-1556-18"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-15-1557-43"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-15-1558-49"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-15-1601-07"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-15-1603-04"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-15-1603-42"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-15-1604-33"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-15-1606-29"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-15-1607-43"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-15-1628-25"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-15-1630-50"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-15-1633-16"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-15-1634-58"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-15-1637-01"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/land_scape/PJC_2023-09-15-1641-35"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-0951-47"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-0952-25"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-0953-28"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-0954-36"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-0958-27"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-0959-00"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1003-12"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1006-05"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1007-01"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1007-33"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1008-57"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1010-03"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1011-44"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1012-23"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1012-49"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1013-35"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1014-37"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1015-14"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1015-44"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1016-17"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1016-49"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1017-13"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1017-43"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1018-47"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1020-05"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1020-36"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1021-04"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1022-46"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1023-13"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1023-47"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1024-50"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1025-10"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1026-03"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1026-30"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-dr/other_objects/JH_2023-09-15-1027-40"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/art_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/art_1"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/art_2"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/art_3"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/art_4"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/bear_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/bear_1"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/bird_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/bird_1"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/bird_2"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/cat_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/cat_1"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/cat_2"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/cat_3"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/chicken_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/chicken_1"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/crocodile_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/crocodile_1"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/dog_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/dog_1"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/dog_2"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/dog_3"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/dog_4"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/dog_5"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/duck_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/eagle_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/elephant_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/elephant_1"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/elephant_2"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/fish_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/fish_1"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/fish_2"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/fox_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/generated_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/generated_1"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/generated_10"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/generated_11"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/generated_12"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/generated_14"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/generated_16"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/generated_17"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/generated_18"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/generated_19"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/generated_2"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/generated_20"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/generated_3"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/generated_4"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/generated_5"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/generated_8"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/generated_9"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/giraffe_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/horse_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/horse_1"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/horse_2"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/lion_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/lion_1"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/lion_2"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/lion_3"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/lion_4"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/lion_5"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/monkey_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_1"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_10"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_11"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_12"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_13"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_14"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_15"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_16"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_17"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_18"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_19"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_2"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_3"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_4"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_5"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_6"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_7"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_8"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/nature_9"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/panda_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/plants_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/plants_1"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/plants_2"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/plants_3"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/plants_4"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/plants_5"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/plants_6"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/plants_7"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/rabbit_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/sheep_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/swan_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/tiger_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/tiger_2"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/tiget_1"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/turtle_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/turtle_1"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/wolf_0"
+        },
+        {
+            "data_path": "./input/drag_data/dragbench-sr/wolf_1"
+        }
+    ]
+}

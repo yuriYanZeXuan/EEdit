@@ -1,0 +1,17 @@
+{
+    "params": [
+        {
+            "use_cache": true,
+            "num_inference_steps": 28,
+            "cascade_num": 3,
+            "fresh_ratio": 0.1,
+            "fresh_threshold": 3,
+            "soft_fresh_weight": 0.25,
+            "tailing_step": 1,
+            "strength": 1.00,
+            "inv_skip":3,
+            "stop_timestep":4,
+            "cache_type": "ours_predefine"
+        }
+    ]
+}

@@ -1,5 +1,5 @@
-*.json
-*/*.json
+# *.json
+# */*.json
 *.py
 */*.py
 *.ipynb

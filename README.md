@@ -1,19 +1,20 @@
 # EEdit
 EEdit⚡: Rethinking the Spatial and Temporal Redundancy for Efficient Image Editing
 
-# install
+# Install
 ```
 conda create -n eedit python=3.12.3
 conda activate eedit
 pip install -r EEdit/requirements.txt
 ```
 
-# checkpoints & datasets
+# Checkpoints & Datasets
 For masks generated from mapping_file.json, we provide scripts that follows:
 `python MyCodes/myutils.py`
 
 <details>
 <summary>checkpoints structure</summary>
+```bash
 weights
 ├── flux1-dev.safetensors
 ├── model_index.json
@@ -50,11 +51,14 @@ weights
 └── vae
     ├── config.json
     └── diffusion_pytorch_model.safetensors
+```
 </details>
 
 
 <details>
 <summary>datasets structure</summary>
+
+``` bash
 input
 ├── composition
 │   ├── Real-Cartoon
@@ -108,8 +112,16 @@ input
 │       ├── mask-000.png
 |       ├── mask-001.png
 |       ├── ...
-
+```
 </details>
 
-# generation
-`source run_gen.sh`
+# Generation
+`cd EEdit && source run_gen.sh`
+
+# Acknowledgements
+- Thanks to [ToCa](https://github.com/Shenyi-Z/ToCa) for cache implementations.
+- Thanks to [Diffusers](https://github.com/huggingface/diffusers) for pipeline implementations.
+- Thanks to [Region Drag](https://github.com/Visual-AI/RegionDrag) for dragging implementations.
+
+# Contact
+yzx_ustc@mail.ustc.edu.cn

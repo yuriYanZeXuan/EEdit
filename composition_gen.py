@@ -68,7 +68,7 @@ def load_models(args, dtype=torch.bfloat16):
     
     return pipe
 
-def generate_image(pipe, pulid_model, img_config, param_config, output_dir):
+def generate_image(pipe, img_config, param_config, output_dir):
     main_image = load_image(img_config["main_image"])
     ref_image = load_image(img_config["ref_image"])
     ref_segment = load_image(img_config["ref_segment"])
@@ -119,7 +119,7 @@ def generate_image(pipe, pulid_model, img_config, param_config, output_dir):
             'current': current,
         }
         torch.manual_seed(42)
-        res = pipe.dbg_call(
+        res = pipe.gen(
             prompt=img_config["prompt"],
             main_image=main_image,
             ref_image=ref_image,
@@ -135,8 +135,6 @@ def generate_image(pipe, pulid_model, img_config, param_config, output_dir):
             gamma=param['gamma'],
             start_timestep=param['start_timestep'],
             stop_timestep=param['stop_timestep'],
-            true_cfg=param['true_cfg'],
-            timestep_to_start_cfg=param['timestep_to_start_cfg'],
             blend_ratio=param['blend_ratio'],
             generator=torch.Generator(device='cuda').manual_seed(42),
             skip_T=3 if 'inv_skip' not in param else param['inv_skip']

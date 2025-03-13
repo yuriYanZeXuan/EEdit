@@ -1,0 +1,275 @@
+{
+    "imgs": [
+        {
+            "prompt": "a cartoon animation of a sheep in the forest",
+            "main_image": "./input/composition/Real-Cartoon/0000 a cartoon animation of a sheep in the forest/bg58.png",
+            "ref_image": "./input/composition/Real-Cartoon/0000 a cartoon animation of a sheep in the forest/fg35_63d22cda1f5b66e8e5aca776.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0000 a cartoon animation of a sheep in the forest/fg35_mask.png",
+            "x1": 152,
+            "y1": 296,
+            "x2": 359,
+            "y2": 471
+        },
+        {
+            "prompt": "a cartoon animation of a panda in the forest",
+            "main_image": "./input/composition/Real-Cartoon/0001 a cartoon animation of a panda in the forest/bg58.png",
+            "ref_image": "./input/composition/Real-Cartoon/0001 a cartoon animation of a panda in the forest/fg_63da0b9bb82cf5cb1db90534.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0001 a cartoon animation of a panda in the forest/fg_63da0b9bb82cf5cb1db90534_mask.png",
+            "x1": 152,
+            "y1": 296,
+            "x2": 359,
+            "y2": 471
+        },
+        {
+            "prompt": " a cartoon animation of a sheep in the forest",
+            "main_image": "./input/composition/Real-Cartoon/0002  a cartoon animation of a sheep in the forest/bg58.png",
+            "ref_image": "./input/composition/Real-Cartoon/0002  a cartoon animation of a sheep in the forest/fg99_63d9d178b82cf5cb1daf7b1a.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0002  a cartoon animation of a sheep in the forest/fg99_mask.png",
+            "x1": 152,
+            "y1": 296,
+            "x2": 359,
+            "y2": 471
+        },
+        {
+            "prompt": " a cartoon animation of an ostrich in the forest",
+            "main_image": "./input/composition/Real-Cartoon/0003  a cartoon animation of an ostrich in the forest/bg58.png",
+            "ref_image": "./input/composition/Real-Cartoon/0003  a cartoon animation of an ostrich in the forest/fg101_63d9d198b82cf5cb1daf80ad.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0003  a cartoon animation of an ostrich in the forest/fg101_mask.png",
+            "x1": 152,
+            "y1": 296,
+            "x2": 359,
+            "y2": 471
+        },
+        {
+            "prompt": "     ",
+            "main_image": "./input/composition/Real-Cartoon/0004  a cartoon animation of a squirrel in the forest/bg58.png",
+            "ref_image": "./input/composition/Real-Cartoon/0004  a cartoon animation of a squirrel in the forest/fg112_63d9d2d8b82cf5cb1dafb945.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0004  a cartoon animation of a squirrel in the forest/fg112_mask.png",
+            "x1": 152,
+            "y1": 296,
+            "x2": 359,
+            "y2": 471
+        },
+        {
+            "prompt": " a cartoon animation of a goose in the forest",
+            "main_image": "./input/composition/Real-Cartoon/0005  a cartoon animation of a goose in the forest/bg58.png",
+            "ref_image": "./input/composition/Real-Cartoon/0005  a cartoon animation of a goose in the forest/fg116_63d9d3e1b82cf5cb1dafe81a.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0005  a cartoon animation of a goose in the forest/fg116_mask.png",
+            "x1": 152,
+            "y1": 296,
+            "x2": 359,
+            "y2": 471
+        },
+        {
+            "prompt": " a cartoon animation of a fox in the forest",
+            "main_image": "./input/composition/Real-Cartoon/0006  a cartoon animation of a fox in the forest/bg58.png",
+            "ref_image": "./input/composition/Real-Cartoon/0006  a cartoon animation of a fox in the forest/fg34_63d22a811f5b66e8e5ac2969.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0006  a cartoon animation of a fox in the forest/fg34_mask.png",
+            "x1": 152,
+            "y1": 296,
+            "x2": 359,
+            "y2": 471
+        },
+        {
+            "prompt": " a cartoon animation of a panda in the forest",
+            "main_image": "./input/composition/Real-Cartoon/0007  a cartoon animation of a panda in the forest/bg58.png",
+            "ref_image": "./input/composition/Real-Cartoon/0007  a cartoon animation of a panda in the forest/fg_63da169fb82cf5cb1dbae94e.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0007  a cartoon animation of a panda in the forest/fg_63da169fb82cf5cb1dbae94e_mask.png",
+            "x1": 152,
+            "y1": 296,
+            "x2": 359,
+            "y2": 471
+        },
+        {
+            "prompt": " a cartoon animation of a panda in the forest",
+            "main_image": "./input/composition/Real-Cartoon/0008  a cartoon animation of a panda in the forest/bg58.png",
+            "ref_image": "./input/composition/Real-Cartoon/0008  a cartoon animation of a panda in the forest/fg_63da0587b82cf5cb1db7fef0_2.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0008  a cartoon animation of a panda in the forest/fg_63da0587b82cf5cb1db7fef0_2_mask.png",
+            "x1": 152,
+            "y1": 296,
+            "x2": 359,
+            "y2": 471
+        },
+        {
+            "prompt": " a cartoon animation of a puppy in the forest",
+            "main_image": "./input/composition/Real-Cartoon/0009  a cartoon animation of a puppy in the forest/bg58.png",
+            "ref_image": "./input/composition/Real-Cartoon/0009  a cartoon animation of a puppy in the forest/fg01.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0009  a cartoon animation of a puppy in the forest/fg01_mask.png",
+            "x1": 152,
+            "y1": 296,
+            "x2": 359,
+            "y2": 471
+        },
+        {
+            "prompt": " a cartoon animation of an elephant in the forest",
+            "main_image": "./input/composition/Real-Cartoon/0010  a cartoon animation of an elephant in the forest/bg58.png",
+            "ref_image": "./input/composition/Real-Cartoon/0010  a cartoon animation of an elephant in the forest/fg04.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0010  a cartoon animation of an elephant in the forest/fg04_mask.png",
+            "x1": 152,
+            "y1": 296,
+            "x2": 359,
+            "y2": 471
+        },
+        {
+            "prompt": " a cartoon animation of a white fox in the forest",
+            "main_image": "./input/composition/Real-Cartoon/0011  a cartoon animation of a white fox in the forest/bg58.png",
+            "ref_image": "./input/composition/Real-Cartoon/0011  a cartoon animation of a white fox in the forest/fg07_63d22abc1f5b66e8e5ac35c2.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0011  a cartoon animation of a white fox in the forest/fg07_mask.png",
+            "x1": 152,
+            "y1": 296,
+            "x2": 359,
+            "y2": 471
+        },
+        {
+            "prompt": "a cartoon animation of a hamburger, a croissant, a piece of bread and a cup of coffee",
+            "main_image": "./input/composition/Real-Cartoon/0012 a cartoon animation of a hamburger, a croissant, a piece of bread and a cup of coffee/bg54.png",
+            "ref_image": "./input/composition/Real-Cartoon/0012 a cartoon animation of a hamburger, a croissant, a piece of bread and a cup of coffee/fg10_63d22a7f1f5b66e8e5ac28f7.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0012 a cartoon animation of a hamburger, a croissant, a piece of bread and a cup of coffee/fg10_mask.jpg",
+            "x1": 48,
+            "y1": 128,
+            "x2": 255,
+            "y2": 327
+        },
+        {
+            "prompt": "a cartoon animation of a roast Chicken, a croissant, a piece of bread and a cup of coffee",
+            "main_image": "./input/composition/Real-Cartoon/0013 a cartoon animation of a roast Chicken, a croissant, a piece of bread and a cup of coffee/bg54.png",
+            "ref_image": "./input/composition/Real-Cartoon/0013 a cartoon animation of a roast Chicken, a croissant, a piece of bread and a cup of coffee/fg37_63d22a7e1f5b66e8e5ac28cc.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0013 a cartoon animation of a roast Chicken, a croissant, a piece of bread and a cup of coffee/fg37_mask.png",
+            "x1": 48,
+            "y1": 128,
+            "x2": 255,
+            "y2": 327
+        },
+        {
+            "prompt": "a cartoon animation of a cake, a croissant, a piece of bread and a cup of coffee",
+            "main_image": "./input/composition/Real-Cartoon/0014 a cartoon animation of a cake, a croissant, a piece of bread and a cup of coffee/bg54.png",
+            "ref_image": "./input/composition/Real-Cartoon/0014 a cartoon animation of a cake, a croissant, a piece of bread and a cup of coffee/fg38_63d22ac61f5b66e8e5ac37b2.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0014 a cartoon animation of a cake, a croissant, a piece of bread and a cup of coffee/fg38_mask.png",
+            "x1": 48,
+            "y1": 128,
+            "x2": 255,
+            "y2": 327
+        },
+        {
+            "prompt": "a cartoon animation of a croissant, a croissant, a piece of bread and a cup of coffee",
+            "main_image": "./input/composition/Real-Cartoon/0015 a cartoon animation of a croissant, a croissant, a piece of bread and a cup of coffee/bg54.png",
+            "ref_image": "./input/composition/Real-Cartoon/0015 a cartoon animation of a croissant, a croissant, a piece of bread and a cup of coffee/fg41_63d22bdd1f5b66e8e5ac718d.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0015 a cartoon animation of a croissant, a croissant, a piece of bread and a cup of coffee/fg41_mask.png",
+            "x1": 48,
+            "y1": 128,
+            "x2": 255,
+            "y2": 327
+        },
+        {
+            "prompt": "a cartoon animation of a waffle, a croissant, a piece of bread and a cup of coffee",
+            "main_image": "./input/composition/Real-Cartoon/0016 a cartoon animation of a waffle, a croissant, a piece of bread and a cup of coffee/bg54.png",
+            "ref_image": "./input/composition/Real-Cartoon/0016 a cartoon animation of a waffle, a croissant, a piece of bread and a cup of coffee/fg43_63d22aa41f5b66e8e5ac30b1.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0016 a cartoon animation of a waffle, a croissant, a piece of bread and a cup of coffee/fg43_mask.png",
+            "x1": 48,
+            "y1": 128,
+            "x2": 255,
+            "y2": 327
+        },
+        {
+            "prompt": "a cartoon animation of a muffin, a croissant, a piece of bread and a cup of coffee",
+            "main_image": "./input/composition/Real-Cartoon/0017 a cartoon animation of a muffin, a croissant, a piece of bread and a cup of coffee/bg54.png",
+            "ref_image": "./input/composition/Real-Cartoon/0017 a cartoon animation of a muffin, a croissant, a piece of bread and a cup of coffee/fg46_63d22cf51f5b66e8e5acad3a.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0017 a cartoon animation of a muffin, a croissant, a piece of bread and a cup of coffee/fg46_mask.png",
+            "x1": 48,
+            "y1": 128,
+            "x2": 255,
+            "y2": 327
+        },
+        {
+            "prompt": "a cartoon animation of a teapot, a croissant, a piece of bread and a cup of coffee",
+            "main_image": "./input/composition/Real-Cartoon/0018 a cartoon animation of a teapot, a croissant, a piece of bread and a cup of coffee/bg54.png",
+            "ref_image": "./input/composition/Real-Cartoon/0018 a cartoon animation of a teapot, a croissant, a piece of bread and a cup of coffee/fg52_63d22b891f5b66e8e5ac6077.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0018 a cartoon animation of a teapot, a croissant, a piece of bread and a cup of coffee/fg52_mask.png",
+            "x1": 32,
+            "y1": 144,
+            "x2": 271,
+            "y2": 287
+        },
+        {
+            "prompt": "a cartoon animation of a castle and buildings",
+            "main_image": "./input/composition/Real-Cartoon/0019 a cartoon animation of a castle and buildings/bg55.png",
+            "ref_image": "./input/composition/Real-Cartoon/0019 a cartoon animation of a castle and buildings/fg24_63d22ad01f5b66e8e5ac3988_skyscraper.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0019 a cartoon animation of a castle and buildings/fg24_mask.png",
+            "x1": 72,
+            "y1": 264,
+            "x2": 231,
+            "y2": 447
+        },
+        {
+            "prompt": "a cartoon animation of a castle in the distance",
+            "main_image": "./input/composition/Real-Cartoon/0020 a cartoon animation of a castle in the distance/bg59.png",
+            "ref_image": "./input/composition/Real-Cartoon/0020 a cartoon animation of a castle in the distance/fg24_63d22ad01f5b66e8e5ac3988_skyscraper.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0020 a cartoon animation of a castle in the distance/fg24_mask.png",
+            "x1": 208,
+            "y1": 120,
+            "x2": 407,
+            "y2": 359
+        },
+        {
+            "prompt": "a cartoon animation of buildings in the distance",
+            "main_image": "./input/composition/Real-Cartoon/0021 a cartoon animation of buildings in the distance/bg59.png",
+            "ref_image": "./input/composition/Real-Cartoon/0021 a cartoon animation of buildings in the distance/fg65_63d22bbb1f5b66e8e5ac6aee.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0021 a cartoon animation of buildings in the distance/fg65_mask.png",
+            "x1": 360,
+            "y1": 152,
+            "x2": 503,
+            "y2": 359
+        },
+        {
+            "prompt": "a cartoon animation of buildings in the distance",
+            "main_image": "./input/composition/Real-Cartoon/0022 a cartoon animation of buildings in the distance/bg59.png",
+            "ref_image": "./input/composition/Real-Cartoon/0022 a cartoon animation of buildings in the distance/fg66_63d22b3b1f5b66e8e5ac4ff4.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0022 a cartoon animation of buildings in the distance/fg66_mask.png",
+            "x1": 272,
+            "y1": 112,
+            "x2": 495,
+            "y2": 351
+        },
+        {
+            "prompt": "a cartoon animation of a building in the distance",
+            "main_image": "./input/composition/Real-Cartoon/0023 a cartoon animation of a building in the distance/bg59.png",
+            "ref_image": "./input/composition/Real-Cartoon/0023 a cartoon animation of a building in the distance/fg83_63d9d502b82cf5cb1db01877.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0023 a cartoon animation of a building in the distance/fg83_mask.png",
+            "x1": 376,
+            "y1": 136,
+            "x2": 495,
+            "y2": 319
+        },
+        {
+            "prompt": "a cartoon animation of an eiffel tower in the distance",
+            "main_image": "./input/composition/Real-Cartoon/0024 a cartoon animation of an eiffel tower in the distance/bg59.png",
+            "ref_image": "./input/composition/Real-Cartoon/0024 a cartoon animation of an eiffel tower in the distance/fg82.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0024 a cartoon animation of an eiffel tower in the distance/fg82_mask.png",
+            "x1": 320,
+            "y1": 152,
+            "x2": 391,
+            "y2": 359
+        },
+        {
+            "prompt": "a cartoon animation of a shopping mall in the distance",
+            "main_image": "./input/composition/Real-Cartoon/0025 a cartoon animation of a shopping mall in the distance/bg59.png",
+            "ref_image": "./input/composition/Real-Cartoon/0025 a cartoon animation of a shopping mall in the distance/fg84_63d9d223b82cf5cb1daf9918.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0025 a cartoon animation of a shopping mall in the distance/fg84_mask.png",
+            "x1": 128,
+            "y1": 218,
+            "x2": 383,
+            "y2": 358
+        },
+        {
+            "prompt": "a cartoon animation of a cabinet",
+            "main_image": "./input/composition/Real-Cartoon/0026 a cartoon animation of a cabinet/bg53.png",
+            "ref_image": "./input/composition/Real-Cartoon/0026 a cartoon animation of a cabinet/fg69_63d22b5a1f5b66e8e5ac567b.jpg",
+            "ref_segment": "./input/composition/Real-Cartoon/0026 a cartoon animation of a cabinet/fg69_mask.png",
+            "x1": 24,
+            "y1": 240,
+            "x2": 183,
+            "y2": 391
+        }
+    ],
+    "params": []
+}

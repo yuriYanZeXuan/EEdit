@@ -108,7 +108,7 @@ def generate_image(pipe, img_config, param_config, output_dir):
             'current': current,
         }
         torch.manual_seed(42)
-        res = pipe(
+        res = pipe.gen(
             prompt=drag_data['prompt'],
             main_image=main_image,
             src_region=None,

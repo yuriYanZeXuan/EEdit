@@ -101,14 +101,13 @@ def generate_image(pipe, img_config, param_config, output_dir):
         if cache_type=='ours_predefine':
             predefine_cache_fresh_indices(cache_dic, current)
         joint_attention_kwargs = {
-            'use_pulid':False,
             'use_attn_map': use_attn_map,
             'cache_dic': cache_dic,
             'use_cache': param['use_cache'],
             'current': current,
         }
         torch.manual_seed(42)
-        res = pipe(
+        res = pipe.gen(
             prompt=prompt,
             image=main_image, 
             mask_image=mask_image,
@@ -118,9 +117,12 @@ def generate_image(pipe, img_config, param_config, output_dir):
             width=width,
             joint_attention_kwargs=joint_attention_kwargs,
             generator=torch.Generator(device='cuda').manual_seed(42),
+            eta=0.7 if 'eta' not in param else param['eta'],
+            gamma=0.7 if 'gamma' not in param else param['gamma'],
             skip_T=3 if 'inv_skip' not in param else param['inv_skip'],
             skip_T_fwd=1 if 'fwd_skip' not in param else param['fwd_skip'],
-            stop_timestep=4 if 'stop_timestep' not in param else param['stop_timestep']
+            stop_timestep=4 if 'stop_timestep' not in param else param['stop_timestep'],
+            mask_timestep=18 if 'mask_timestep' not in param else param['mask_timestep']
         )
         image=res.images[0]
         num = get_next_number(output_dir)

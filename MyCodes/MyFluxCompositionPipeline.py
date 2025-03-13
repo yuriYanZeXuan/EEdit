@@ -35,7 +35,7 @@ from diffusers.utils import (
 )
 from diffusers.utils.torch_utils import randn_tensor
 from diffusers import DiffusionPipeline
-# from diffusers.pipelines.flux.pipeline_output import FluxPipelineOutput
+from diffusers.pipelines.flux.pipeline_output import FluxPipelineOutput
 from diffusers.pipelines.flux.pipeline_flux_inpaint import FluxInpaintPipeline
 import torch.nn.functional as F
 EXAMPLE_DOC_STRING = """
@@ -666,15 +666,10 @@ class FluxCompositionPipeline(FluxInpaintPipeline):
         return self._interrupt
     
     @torch.no_grad()
-    @replace_example_docstring(EXAMPLE_DOC_STRING)
-    def call(
+    def gen(
         self,
-        
         prompt: Union[str, List[str]] = None,
-        prompt_2: Optional[Union[str, List[str]]] = None,
         neg_prompt: Optional[Union[str, List[str]]] = None,
-        neg_prompt_2: Optional[Union[str, List[str]]] = None,
-        
         main_image: PipelineImageInput = None,
         ref_image: PipelineImageInput = None,
         ref_segment: PipelineImageInput = None,
@@ -845,7 +840,6 @@ class FluxCompositionPipeline(FluxInpaintPipeline):
         # 1. Check inputs. Raise error if not correct
         self.check_inputs(
             prompt=prompt,
-            prompt_2=prompt_2,
             main_image=main_image,
             ref_segment=ref_segment,
             ref_image=ref_image,
@@ -903,7 +897,7 @@ class FluxCompositionPipeline(FluxInpaintPipeline):
             text_ids,
         ) = self.encode_prompt(
             prompt=prompt,
-            prompt_2=prompt_2,
+            prompt_2="",
             prompt_embeds=prompt_embeds,
             pooled_prompt_embeds=pooled_prompt_embeds,
             device=device,
@@ -1161,4 +1155,4 @@ class FluxCompositionPipeline(FluxInpaintPipeline):
         if not return_dict:
             return (image,)
 
-        return FluxPipelineOutput(images=image,fwd_time=fwd_time,inv_time=inv_time)
+        return FluxPipelineOutput(images=image)

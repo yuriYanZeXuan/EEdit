@@ -1,0 +1,375 @@
+{
+    "imgs": [
+        {
+            "prompt": "an oil painting of a sheep, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0000 an oil painting of a sheep, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0000 an oil painting of a sheep, Van Gogh Style/fg35_63d22cda1f5b66e8e5aca776.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0000 an oil painting of a sheep, Van Gogh Style/fg35_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": "an oil painting of a panda, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0001 an oil painting of a panda, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0001 an oil painting of a panda, Van Gogh Style/fg_63da0b9bb82cf5cb1db90534.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0001 an oil painting of a panda, Van Gogh Style/fg_63da0b9bb82cf5cb1db90534_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": " an oil painting of a dog, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0002  an oil painting of a dog, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0002  an oil painting of a dog, Van Gogh Style/fg92_63d9d6c9b82cf5cb1db05fda.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0002  an oil painting of a dog, Van Gogh Style/fg92_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": " an oil painting of a tortoise, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0003  an oil painting of a tortoise, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0003  an oil painting of a tortoise, Van Gogh Style/fg97_63d9d115b82cf5cb1daf69a3.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0003  an oil painting of a tortoise, Van Gogh Style/fg97_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": " an oil painting of a sheep, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0004  an oil painting of a sheep, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0004  an oil painting of a sheep, Van Gogh Style/fg99_63d9d178b82cf5cb1daf7b1a.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0004  an oil painting of a sheep, Van Gogh Style/fg99_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": "an oil painting of a panda, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0005 an oil painting of a panda, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0005 an oil painting of a panda, Van Gogh Style/fg_63d9f84cb82cf5cb1db5cec0.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0005 an oil painting of a panda, Van Gogh Style/fg_63d9f84cb82cf5cb1db5cec0_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": " an oil painting of a walking cat, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0006  an oil painting of a walking cat, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0006  an oil painting of a walking cat, Van Gogh Style/fg104_63d9d1adb82cf5cb1daf8499.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0006  an oil painting of a walking cat, Van Gogh Style/fg104_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": " an oil painting of an elephant, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0007  an oil painting of an elephant, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0007  an oil painting of an elephant, Van Gogh Style/fg106_63d9d1deb82cf5cb1daf8d31.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0007  an oil painting of an elephant, Van Gogh Style/fg106_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": " an oil painting of a squirrel, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0008  an oil painting of a squirrel, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0008  an oil painting of a squirrel, Van Gogh Style/fg112_63d9d2d8b82cf5cb1dafb945.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0008  an oil painting of a squirrel, Van Gogh Style/fg112_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": " an oil painting of a penguin, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0009  an oil painting of a penguin, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0009  an oil painting of a penguin, Van Gogh Style/fg113_63d9d373b82cf5cb1dafd49f.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0009  an oil painting of a penguin, Van Gogh Style/fg113_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": " an oil painting of a goat, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0010  an oil painting of a goat, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0010  an oil painting of a goat, Van Gogh Style/fg118_63d9d3ecb82cf5cb1dafe9f9.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0010  an oil painting of a goat, Van Gogh Style/fg118_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": " an oil painting of a panda, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0011  an oil painting of a panda, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0011  an oil painting of a panda, Van Gogh Style/fg_63d9fdbab82cf5cb1db6acfa.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0011  an oil painting of a panda, Van Gogh Style/fg_63d9fdbab82cf5cb1db6acfa_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": " an oil painting of a fox, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0012  an oil painting of a fox, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0012  an oil painting of a fox, Van Gogh Style/fg34_63d22a811f5b66e8e5ac2969.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0012  an oil painting of a fox, Van Gogh Style/fg34_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": " an oil painting of a panda, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0013  an oil painting of a panda, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0013  an oil painting of a panda, Van Gogh Style/fg_63da169fb82cf5cb1dbae94e.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0013  an oil painting of a panda, Van Gogh Style/fg_63da169fb82cf5cb1dbae94e_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": " an oil painting of a panda, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0014  an oil painting of a panda, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0014  an oil painting of a panda, Van Gogh Style/fg_63da0587b82cf5cb1db7fef0_0.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0014  an oil painting of a panda, Van Gogh Style/fg_63da0587b82cf5cb1db7fef0_0_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": " an oil painting of a panda, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0015  an oil painting of a panda, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0015  an oil painting of a panda, Van Gogh Style/fg_63da0587b82cf5cb1db7fef0_2.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0015  an oil painting of a panda, Van Gogh Style/fg_63da0587b82cf5cb1db7fef0_2_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": " an oil painting of a puppy, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0016  an oil painting of a puppy, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0016  an oil painting of a puppy, Van Gogh Style/fg01.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0016  an oil painting of a puppy, Van Gogh Style/fg01_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": " an oil painting of an elephant, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0017  an oil painting of an elephant, Van Gogh Style/bg62.png",
+            "ref_image": "./input/composition/Real-Painting/0017  an oil painting of an elephant, Van Gogh Style/fg04.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0017  an oil painting of an elephant, Van Gogh Style/fg04_mask.png",
+            "x1": 152,
+            "y1": 304,
+            "x2": 359,
+            "y2": 511
+        },
+        {
+            "prompt": "an oil painting of a hamburger, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0018 an oil painting of a hamburger, Van Gogh Style/bg61.png",
+            "ref_image": "./input/composition/Real-Painting/0018 an oil painting of a hamburger, Van Gogh Style/fg10_63d22a7f1f5b66e8e5ac28f7.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0018 an oil painting of a hamburger, Van Gogh Style/fg10_mask.jpg",
+            "x1": 312,
+            "y1": 288,
+            "x2": 487,
+            "y2": 447
+        },
+        {
+            "prompt": "an oil painting of a roast Chicken, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0019 an oil painting of a roast Chicken, Van Gogh Style/bg61.png",
+            "ref_image": "./input/composition/Real-Painting/0019 an oil painting of a roast Chicken, Van Gogh Style/fg37_63d22a7e1f5b66e8e5ac28cc.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0019 an oil painting of a roast Chicken, Van Gogh Style/fg37_mask.png",
+            "x1": 312,
+            "y1": 288,
+            "x2": 487,
+            "y2": 447
+        },
+        {
+            "prompt": "an oil painting of a cake, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0020 an oil painting of a cake, Van Gogh Style/bg61.png",
+            "ref_image": "./input/composition/Real-Painting/0020 an oil painting of a cake, Van Gogh Style/fg38_63d22ac61f5b66e8e5ac37b2.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0020 an oil painting of a cake, Van Gogh Style/fg38_mask.png",
+            "x1": 312,
+            "y1": 288,
+            "x2": 487,
+            "y2": 447
+        },
+        {
+            "prompt": "an oil painting of a tomato, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0021 an oil painting of a tomato, Van Gogh Style/bg61.png",
+            "ref_image": "./input/composition/Real-Painting/0021 an oil painting of a tomato, Van Gogh Style/fg39_63d22ba91f5b66e8e5ac6721.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0021 an oil painting of a tomato, Van Gogh Style/fg39_63d22ba91f5b66e8e5ac6721_mask.jpg",
+            "x1": 312,
+            "y1": 288,
+            "x2": 487,
+            "y2": 447
+        },
+        {
+            "prompt": "an oil painting of a croissant, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0022 an oil painting of a croissant, Van Gogh Style/bg61.png",
+            "ref_image": "./input/composition/Real-Painting/0022 an oil painting of a croissant, Van Gogh Style/fg41_63d22bdd1f5b66e8e5ac718d.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0022 an oil painting of a croissant, Van Gogh Style/fg41_mask.png",
+            "x1": 312,
+            "y1": 288,
+            "x2": 487,
+            "y2": 447
+        },
+        {
+            "prompt": "an oil painting of a hot dog bread, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0023 an oil painting of a hot dog bread, Van Gogh Style/bg61.png",
+            "ref_image": "./input/composition/Real-Painting/0023 an oil painting of a hot dog bread, Van Gogh Style/fg42_63d22c7f1f5b66e8e5ac9437.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0023 an oil painting of a hot dog bread, Van Gogh Style/fg42_mask.png",
+            "x1": 312,
+            "y1": 288,
+            "x2": 487,
+            "y2": 447
+        },
+        {
+            "prompt": "an oil painting of a waffle, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0024 an oil painting of a waffle, Van Gogh Style/bg61.png",
+            "ref_image": "./input/composition/Real-Painting/0024 an oil painting of a waffle, Van Gogh Style/fg43_63d22aa41f5b66e8e5ac30b1.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0024 an oil painting of a waffle, Van Gogh Style/fg43_mask.png",
+            "x1": 312,
+            "y1": 288,
+            "x2": 487,
+            "y2": 447
+        },
+        {
+            "prompt": "an oil painting of a burrito, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0025 an oil painting of a burrito, Van Gogh Style/bg61.png",
+            "ref_image": "./input/composition/Real-Painting/0025 an oil painting of a burrito, Van Gogh Style/fg45_63d22c291f5b66e8e5ac81e7.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0025 an oil painting of a burrito, Van Gogh Style/fg45_mask.png",
+            "x1": 312,
+            "y1": 288,
+            "x2": 487,
+            "y2": 447
+        },
+        {
+            "prompt": "an oil painting of a muffin, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0026 an oil painting of a muffin, Van Gogh Style/bg61.png",
+            "ref_image": "./input/composition/Real-Painting/0026 an oil painting of a muffin, Van Gogh Style/fg46_63d22cf51f5b66e8e5acad3a.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0026 an oil painting of a muffin, Van Gogh Style/fg46_mask.png",
+            "x1": 312,
+            "y1": 288,
+            "x2": 487,
+            "y2": 447
+        },
+        {
+            "prompt": "an oil painting of a cup of coffee, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0027 an oil painting of a cup of coffee, Van Gogh Style/bg61.png",
+            "ref_image": "./input/composition/Real-Painting/0027 an oil painting of a cup of coffee, Van Gogh Style/fg63_63d22ac81f5b66e8e5ac383d.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0027 an oil painting of a cup of coffee, Van Gogh Style/fg63_mask.png",
+            "x1": 312,
+            "y1": 288,
+            "x2": 487,
+            "y2": 447
+        },
+        {
+            "prompt": "an oil painting of a sandwich filled with meat, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0028 an oil painting of a sandwich filled with meat, Van Gogh Style/bg61.png",
+            "ref_image": "./input/composition/Real-Painting/0028 an oil painting of a sandwich filled with meat, Van Gogh Style/fg51_63d22b8d1f5b66e8e5ac6136.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0028 an oil painting of a sandwich filled with meat, Van Gogh Style/fg51_mask.png",
+            "x1": 312,
+            "y1": 288,
+            "x2": 487,
+            "y2": 447
+        },
+        {
+            "prompt": "an oil painting of a teapot, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0029 an oil painting of a teapot, Van Gogh Style/bg61.png",
+            "ref_image": "./input/composition/Real-Painting/0029 an oil painting of a teapot, Van Gogh Style/fg52_63d22b891f5b66e8e5ac6077.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0029 an oil painting of a teapot, Van Gogh Style/fg52_mask.png",
+            "x1": 312,
+            "y1": 288,
+            "x2": 487,
+            "y2": 447
+        },
+        {
+            "prompt": "an oil painting of a chocolate doughnut, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0030 an oil painting of a chocolate doughnut, Van Gogh Style/bg61.png",
+            "ref_image": "./input/composition/Real-Painting/0030 an oil painting of a chocolate doughnut, Van Gogh Style/fg58_63d22bdf1f5b66e8e5ac7208.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0030 an oil painting of a chocolate doughnut, Van Gogh Style/fg58_mask.png",
+            "x1": 312,
+            "y1": 288,
+            "x2": 487,
+            "y2": 447
+        },
+        {
+            "prompt": "an oil painting of a sandwich, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0031 an oil painting of a sandwich, Van Gogh Style/bg61.png",
+            "ref_image": "./input/composition/Real-Painting/0031 an oil painting of a sandwich, Van Gogh Style/fg60_63d22be21f5b66e8e5ac72cf.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0031 an oil painting of a sandwich, Van Gogh Style/fg60_mask.png",
+            "x1": 312,
+            "y1": 288,
+            "x2": 487,
+            "y2": 447
+        },
+        {
+            "prompt": "an oil painting of buildings in the distance, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0032 an oil painting of buildings in the distance, Van Gogh Style/bg60.png",
+            "ref_image": "./input/composition/Real-Painting/0032 an oil painting of buildings in the distance, Van Gogh Style/fg65_63d22bbb1f5b66e8e5ac6aee.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0032 an oil painting of buildings in the distance, Van Gogh Style/fg65_mask.png",
+            "x1": 304,
+            "y1": 96,
+            "x2": 511,
+            "y2": 415
+        },
+        {
+            "prompt": "an oil painting of a building in the distance, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0033 an oil painting of a building in the distance, Van Gogh Style/bg60.png",
+            "ref_image": "./input/composition/Real-Painting/0033 an oil painting of a building in the distance, Van Gogh Style/fg83_63d9d502b82cf5cb1db01877.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0033 an oil painting of a building in the distance, Van Gogh Style/fg83_mask.png",
+            "x1": 328,
+            "y1": 128,
+            "x2": 487,
+            "y2": 383
+        },
+        {
+            "prompt": "an oil painting of an eiffel tower in the distance, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0034 an oil painting of an eiffel tower in the distance, Van Gogh Style/bg60.png",
+            "ref_image": "./input/composition/Real-Painting/0034 an oil painting of an eiffel tower in the distance, Van Gogh Style/fg82.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0034 an oil painting of an eiffel tower in the distance, Van Gogh Style/fg82_mask.png",
+            "x1": 304,
+            "y1": 120,
+            "x2": 407,
+            "y2": 439
+        },
+        {
+            "prompt": "an oil painting of a shopping mall in the distance, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0035 an oil painting of a shopping mall in the distance, Van Gogh Style/bg60.png",
+            "ref_image": "./input/composition/Real-Painting/0035 an oil painting of a shopping mall in the distance, Van Gogh Style/fg84_63d9d223b82cf5cb1daf9918.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0035 an oil painting of a shopping mall in the distance, Van Gogh Style/fg84_mask.png",
+            "x1": 128,
+            "y1": 208,
+            "x2": 487,
+            "y2": 407
+        },
+        {
+            "prompt": "an oil painting of skyscrapers in the distance, Van Gogh Style",
+            "main_image": "./input/composition/Real-Painting/0036 an oil painting of skyscrapers in the distance, Van Gogh Style/bg60.png",
+            "ref_image": "./input/composition/Real-Painting/0036 an oil painting of skyscrapers in the distance, Van Gogh Style/fg81_63d9d1c1b82cf5cb1daf881b.jpg",
+            "ref_segment": "./input/composition/Real-Painting/0036 an oil painting of skyscrapers in the distance, Van Gogh Style/fg81_mask.png",
+            "x1": 128,
+            "y1": 192,
+            "x2": 487,
+            "y2": 423
+        }
+    ],
+    "params": []
+}

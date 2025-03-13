@@ -1,0 +1,315 @@
+{
+    "imgs": [
+        {
+            "prompt": "a pencil drawing of a sheep in the sunset",
+            "main_image": "./input/composition/Real-Sketch/0000 a pencil drawing of a sheep in the sunset/bg52.png",
+            "ref_image": "./input/composition/Real-Sketch/0000 a pencil drawing of a sheep in the sunset/fg35_63d22cda1f5b66e8e5aca776.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0000 a pencil drawing of a sheep in the sunset/fg35_mask.png",
+            "x1": 168,
+            "y1": 304,
+            "x2": 343,
+            "y2": 511
+        },
+        {
+            "prompt": "a pencil drawing of a dog in the sunset",
+            "main_image": "./input/composition/Real-Sketch/0001 a pencil drawing of a dog in the sunset/bg52.png",
+            "ref_image": "./input/composition/Real-Sketch/0001 a pencil drawing of a dog in the sunset/fg92_63d9d6c9b82cf5cb1db05fda.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0001 a pencil drawing of a dog in the sunset/fg92_mask.png",
+            "x1": 168,
+            "y1": 304,
+            "x2": 343,
+            "y2": 511
+        },
+        {
+            "prompt": "a pencil drawing of a tortoise in the sunset",
+            "main_image": "./input/composition/Real-Sketch/0002 a pencil drawing of a tortoise in the sunset/bg52.png",
+            "ref_image": "./input/composition/Real-Sketch/0002 a pencil drawing of a tortoise in the sunset/fg97_63d9d115b82cf5cb1daf69a3.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0002 a pencil drawing of a tortoise in the sunset/fg97_mask.png",
+            "x1": 168,
+            "y1": 304,
+            "x2": 343,
+            "y2": 511
+        },
+        {
+            "prompt": "a pencil drawing of a puppy lying in the sunset",
+            "main_image": "./input/composition/Real-Sketch/0003 a pencil drawing of a puppy lying in the sunset/bg52.png",
+            "ref_image": "./input/composition/Real-Sketch/0003 a pencil drawing of a puppy lying in the sunset/fg100_63d9d13eb82cf5cb1daf70f2.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0003 a pencil drawing of a puppy lying in the sunset/fg100_mask.png",
+            "x1": 168,
+            "y1": 304,
+            "x2": 343,
+            "y2": 511
+        },
+        {
+            "prompt": "a pencil drawing of a panda in the sunset",
+            "main_image": "./input/composition/Real-Sketch/0004 a pencil drawing of a panda in the sunset/bg52.png",
+            "ref_image": "./input/composition/Real-Sketch/0004 a pencil drawing of a panda in the sunset/fg_63d9f84cb82cf5cb1db5cec0.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0004 a pencil drawing of a panda in the sunset/fg_63d9f84cb82cf5cb1db5cec0_mask.png",
+            "x1": 168,
+            "y1": 304,
+            "x2": 343,
+            "y2": 511
+        },
+        {
+            "prompt": "a pencil drawing of a cat walking in the sunset",
+            "main_image": "./input/composition/Real-Sketch/0005 a pencil drawing of a cat walking in the sunset/bg52.png",
+            "ref_image": "./input/composition/Real-Sketch/0005 a pencil drawing of a cat walking in the sunset/fg104_63d9d1adb82cf5cb1daf8499.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0005 a pencil drawing of a cat walking in the sunset/fg104_mask.png",
+            "x1": 168,
+            "y1": 304,
+            "x2": 343,
+            "y2": 511
+        },
+        {
+            "prompt": "a pencil drawing of an elephant in the sunset",
+            "main_image": "./input/composition/Real-Sketch/0006 a pencil drawing of an elephant in the sunset/bg52.png",
+            "ref_image": "./input/composition/Real-Sketch/0006 a pencil drawing of an elephant in the sunset/fg106_63d9d1deb82cf5cb1daf8d31.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0006 a pencil drawing of an elephant in the sunset/fg106_mask.png",
+            "x1": 168,
+            "y1": 304,
+            "x2": 343,
+            "y2": 511
+        },
+        {
+            "prompt": "a pencil drawing of a squirrel in the sunset",
+            "main_image": "./input/composition/Real-Sketch/0007 a pencil drawing of a squirrel in the sunset/bg52.png",
+            "ref_image": "./input/composition/Real-Sketch/0007 a pencil drawing of a squirrel in the sunset/fg112_63d9d2d8b82cf5cb1dafb945.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0007 a pencil drawing of a squirrel in the sunset/fg112_mask.png",
+            "x1": 168,
+            "y1": 304,
+            "x2": 343,
+            "y2": 511
+        },
+        {
+            "prompt": "a pencil drawing of a fox in the sunset",
+            "main_image": "./input/composition/Real-Sketch/0008 a pencil drawing of a fox in the sunset/bg52.png",
+            "ref_image": "./input/composition/Real-Sketch/0008 a pencil drawing of a fox in the sunset/fg34_63d22a811f5b66e8e5ac2969.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0008 a pencil drawing of a fox in the sunset/fg34_mask.png",
+            "x1": 168,
+            "y1": 304,
+            "x2": 343,
+            "y2": 511
+        },
+        {
+            "prompt": "a pencil drawing of a panda in the sunset",
+            "main_image": "./input/composition/Real-Sketch/0009 a pencil drawing of a panda in the sunset/bg52.png",
+            "ref_image": "./input/composition/Real-Sketch/0009 a pencil drawing of a panda in the sunset/fg_63da169fb82cf5cb1dbae94e.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0009 a pencil drawing of a panda in the sunset/fg_63da169fb82cf5cb1dbae94e_mask.png",
+            "x1": 168,
+            "y1": 304,
+            "x2": 343,
+            "y2": 511
+        },
+        {
+            "prompt": "a pencil drawing of a puppy in the sunset",
+            "main_image": "./input/composition/Real-Sketch/0010 a pencil drawing of a puppy in the sunset/bg52.png",
+            "ref_image": "./input/composition/Real-Sketch/0010 a pencil drawing of a puppy in the sunset/fg01.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0010 a pencil drawing of a puppy in the sunset/fg01_mask.png",
+            "x1": 168,
+            "y1": 304,
+            "x2": 343,
+            "y2": 511
+        },
+        {
+            "prompt": "a pencil drawing of a hamburger and other food, gray tone",
+            "main_image": "./input/composition/Real-Sketch/0011 a pencil drawing of a hamburger and other food, gray tone/bg50.png",
+            "ref_image": "./input/composition/Real-Sketch/0011 a pencil drawing of a hamburger and other food, gray tone/fg10_63d22a7f1f5b66e8e5ac28f7.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0011 a pencil drawing of a hamburger and other food, gray tone/fg10_mask.jpg",
+            "x1": 304,
+            "y1": 224,
+            "x2": 463,
+            "y2": 367
+        },
+        {
+            "prompt": "a pencil drawing of a roast Chicken and other food, gray tone",
+            "main_image": "./input/composition/Real-Sketch/0012 a pencil drawing of a roast Chicken and other food, gray tone/bg50.png",
+            "ref_image": "./input/composition/Real-Sketch/0012 a pencil drawing of a roast Chicken and other food, gray tone/fg37_63d22a7e1f5b66e8e5ac28cc.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0012 a pencil drawing of a roast Chicken and other food, gray tone/fg37_mask.png",
+            "x1": 304,
+            "y1": 224,
+            "x2": 463,
+            "y2": 367
+        },
+        {
+            "prompt": "a pencil drawing of a piece of bread and other food, gray tone",
+            "main_image": "./input/composition/Real-Sketch/0013 a pencil drawing of a piece of bread and other food, gray tone/bg50.png",
+            "ref_image": "./input/composition/Real-Sketch/0013 a pencil drawing of a piece of bread and other food, gray tone/fg12_63d22c551f5b66e8e5ac8b10.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0013 a pencil drawing of a piece of bread and other food, gray tone/fg12_mask.png",
+            "x1": 304,
+            "y1": 224,
+            "x2": 463,
+            "y2": 367
+        },
+        {
+            "prompt": "a pencil drawing of a croissant and other food, gray tone",
+            "main_image": "./input/composition/Real-Sketch/0014 a pencil drawing of a croissant and other food, gray tone/bg50.png",
+            "ref_image": "./input/composition/Real-Sketch/0014 a pencil drawing of a croissant and other food, gray tone/fg41_63d22bdd1f5b66e8e5ac718d.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0014 a pencil drawing of a croissant and other food, gray tone/fg41_mask.png",
+            "x1": 304,
+            "y1": 224,
+            "x2": 463,
+            "y2": 367
+        },
+        {
+            "prompt": "a pencil drawing of a waffle and other food, gray tone",
+            "main_image": "./input/composition/Real-Sketch/0015 a pencil drawing of a waffle and other food, gray tone/bg50.png",
+            "ref_image": "./input/composition/Real-Sketch/0015 a pencil drawing of a waffle and other food, gray tone/fg43_63d22aa41f5b66e8e5ac30b1.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0015 a pencil drawing of a waffle and other food, gray tone/fg43_mask.png",
+            "x1": 304,
+            "y1": 224,
+            "x2": 463,
+            "y2": 367
+        },
+        {
+            "prompt": "a pencil drawing of a burrito and other food, gray tone",
+            "main_image": "./input/composition/Real-Sketch/0016 a pencil drawing of a burrito and other food, gray tone/bg50.png",
+            "ref_image": "./input/composition/Real-Sketch/0016 a pencil drawing of a burrito and other food, gray tone/fg45_63d22c291f5b66e8e5ac81e7.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0016 a pencil drawing of a burrito and other food, gray tone/fg45_mask.png",
+            "x1": 304,
+            "y1": 224,
+            "x2": 463,
+            "y2": 367
+        },
+        {
+            "prompt": "a pencil drawing of a muffin and other food, gray tone",
+            "main_image": "./input/composition/Real-Sketch/0017 a pencil drawing of a muffin and other food, gray tone/bg50.png",
+            "ref_image": "./input/composition/Real-Sketch/0017 a pencil drawing of a muffin and other food, gray tone/fg46_63d22cf51f5b66e8e5acad3a.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0017 a pencil drawing of a muffin and other food, gray tone/fg46_mask.png",
+            "x1": 304,
+            "y1": 224,
+            "x2": 463,
+            "y2": 367
+        },
+        {
+            "prompt": "a pencil drawing of a cup of coffee and other food, gray tone",
+            "main_image": "./input/composition/Real-Sketch/0018 a pencil drawing of a cup of coffee and other food, gray tone/bg50.png",
+            "ref_image": "./input/composition/Real-Sketch/0018 a pencil drawing of a cup of coffee and other food, gray tone/fg48_63d22ab01f5b66e8e5ac332b.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0018 a pencil drawing of a cup of coffee and other food, gray tone/fg48_mask.png",
+            "x1": 304,
+            "y1": 224,
+            "x2": 463,
+            "y2": 367
+        },
+        {
+            "prompt": "a pencil drawing of a castle in the distance, black and white painting",
+            "main_image": "./input/composition/Real-Sketch/0019 a pencil drawing of a castle in the distance, black and white painting/bg48.png",
+            "ref_image": "./input/composition/Real-Sketch/0019 a pencil drawing of a castle in the distance, black and white painting/fg64_63d22cb71f5b66e8e5aca045.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0019 a pencil drawing of a castle in the distance, black and white painting/fg64_mask.png",
+            "x1": 224,
+            "y1": 192,
+            "x2": 487,
+            "y2": 319
+        },
+        {
+            "prompt": "a pencil drawing of buildings in the distance, black and white painting",
+            "main_image": "./input/composition/Real-Sketch/0020 a pencil drawing of buildings in the distance, black and white painting/bg48.png",
+            "ref_image": "./input/composition/Real-Sketch/0020 a pencil drawing of buildings in the distance, black and white painting/fg65_63d22bbb1f5b66e8e5ac6aee.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0020 a pencil drawing of buildings in the distance, black and white painting/fg65_mask.png",
+            "x1": 304,
+            "y1": 64,
+            "x2": 503,
+            "y2": 351
+        },
+        {
+            "prompt": "a pencil drawing of skyscrapers in the distance, black and white painting",
+            "main_image": "./input/composition/Real-Sketch/0021 a pencil drawing of skyscrapers in the distance, black and white painting/bg48.png",
+            "ref_image": "./input/composition/Real-Sketch/0021 a pencil drawing of skyscrapers in the distance, black and white painting/fg81_63d9d1c1b82cf5cb1daf881b.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0021 a pencil drawing of skyscrapers in the distance, black and white painting/fg81_mask.png",
+            "x1": 264,
+            "y1": 200,
+            "x2": 503,
+            "y2": 351
+        },
+        {
+            "prompt": "a pencil drawing of an eiffel tower in the distance, black and white painting",
+            "main_image": "./input/composition/Real-Sketch/0022 a pencil drawing of an eiffel tower in the distance, black and white painting/bg48.png",
+            "ref_image": "./input/composition/Real-Sketch/0022 a pencil drawing of an eiffel tower in the distance, black and white painting/fg82.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0022 a pencil drawing of an eiffel tower in the distance, black and white painting/fg82_mask.png",
+            "x1": 344,
+            "y1": 96,
+            "x2": 415,
+            "y2": 311
+        },
+        {
+            "prompt": "a pencil drawing of a building in the distance, black and white painting",
+            "main_image": "./input/composition/Real-Sketch/0023 a pencil drawing of a building in the distance, black and white painting/bg48.png",
+            "ref_image": "./input/composition/Real-Sketch/0023 a pencil drawing of a building in the distance, black and white painting/fg83_63d9d502b82cf5cb1db01877.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0023 a pencil drawing of a building in the distance, black and white painting/fg83_mask.png",
+            "x1": 328,
+            "y1": 96,
+            "x2": 439,
+            "y2": 279
+        },
+        {
+            "prompt": "a pencil drawing of a shopping mall in the distance, black and white painting",
+            "main_image": "./input/composition/Real-Sketch/0024 a pencil drawing of a shopping mall in the distance, black and white painting/bg48.png",
+            "ref_image": "./input/composition/Real-Sketch/0024 a pencil drawing of a shopping mall in the distance, black and white painting/fg84_63d9d223b82cf5cb1daf9918.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0024 a pencil drawing of a shopping mall in the distance, black and white painting/fg84_mask.png",
+            "x1": 272,
+            "y1": 216,
+            "x2": 511,
+            "y2": 343
+        },
+        {
+            "prompt": "a pencil drawing of a car and a willow, black and white painting",
+            "main_image": "./input/composition/Real-Sketch/0025 a pencil drawing of a car and a willow, black and white painting/bg51.png",
+            "ref_image": "./input/composition/Real-Sketch/0025 a pencil drawing of a car and a willow, black and white painting/fg124.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0025 a pencil drawing of a car and a willow, black and white painting/fg124_mask.png",
+            "x1": 304,
+            "y1": 344,
+            "x2": 511,
+            "y2": 471
+        },
+        {
+            "prompt": "a pencil drawing of a car and a willow, black and white painting",
+            "main_image": "./input/composition/Real-Sketch/0026 a pencil drawing of a car and a willow, black and white painting/bg51.png",
+            "ref_image": "./input/composition/Real-Sketch/0026 a pencil drawing of a car and a willow, black and white painting/fg123.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0026 a pencil drawing of a car and a willow, black and white painting/fg123_mask.png",
+            "x1": 304,
+            "y1": 344,
+            "x2": 511,
+            "y2": 479
+        },
+        {
+            "prompt": "a pencil drawing of a car and a willow, black and white painting",
+            "main_image": "./input/composition/Real-Sketch/0027 a pencil drawing of a car and a willow, black and white painting/bg51.png",
+            "ref_image": "./input/composition/Real-Sketch/0027 a pencil drawing of a car and a willow, black and white painting/fg_63d9d0ebb82cf5cb1daf626f.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0027 a pencil drawing of a car and a willow, black and white painting/fg_63d9d0ebb82cf5cb1daf626f_mask.png",
+            "x1": 304,
+            "y1": 344,
+            "x2": 511,
+            "y2": 471
+        },
+        {
+            "prompt": "a pencil drawing of a car and a willow, black and white painting",
+            "main_image": "./input/composition/Real-Sketch/0028 a pencil drawing of a car and a willow, black and white painting/bg51.png",
+            "ref_image": "./input/composition/Real-Sketch/0028 a pencil drawing of a car and a willow, black and white painting/fg125.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0028 a pencil drawing of a car and a willow, black and white painting/fg125_mask.png",
+            "x1": 312,
+            "y1": 264,
+            "x2": 503,
+            "y2": 351
+        },
+        {
+            "prompt": "a pencil drawing of a microwave oven on a shelf, black and white painting",
+            "main_image": "./input/composition/Real-Sketch/0029 a pencil drawing of a microwave oven on a shelf, black and white painting/bg47.png",
+            "ref_image": "./input/composition/Real-Sketch/0029 a pencil drawing of a microwave oven on a shelf, black and white painting/fg_63d9d43ab82cf5cb1daff7a8.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0029 a pencil drawing of a microwave oven on a shelf, black and white painting/fg_63d9d43ab82cf5cb1daff7a8_mask.png",
+            "x1": 96,
+            "y1": 40,
+            "x2": 311,
+            "y2": 159
+        },
+        {
+            "prompt": "a pencil drawing of a castle in the distance, black and white painting",
+            "main_image": "./input/composition/Real-Sketch/0030 a pencil drawing of a castle in the distance, black and white painting/bg48.png",
+            "ref_image": "./input/composition/Real-Sketch/0030 a pencil drawing of a castle in the distance, black and white painting/fg24_63d22ad01f5b66e8e5ac3988_skyscraper.jpg",
+            "ref_segment": "./input/composition/Real-Sketch/0030 a pencil drawing of a castle in the distance, black and white painting/fg24_mask.png",
+            "x1": 272,
+            "y1": 128,
+            "x2": 447,
+            "y2": 335
+        }
+    ],
+    "params": []
+}

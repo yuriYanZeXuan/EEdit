@@ -732,7 +732,7 @@ class FluxInpaintPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
 
     @torch.no_grad()
     @replace_example_docstring(EXAMPLE_DOC_STRING)
-    def __call__(
+    def gen(
         self,
         prompt: Union[str, List[str]] = None,
         prompt_2: Optional[Union[str, List[str]]] = None,
@@ -747,7 +747,7 @@ class FluxInpaintPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
         gamma: float = 1.0,
         start_timestep: int = 0,
         stop_timestep: int = 4,
-        
+        mask_timestep: int = 18,
         padding_mask_crop: Optional[int] = None,
         strength: float = 1.0,
         num_inference_steps: int = 28,
@@ -1068,7 +1068,7 @@ class FluxInpaintPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
                     init_latents_proper = self.scheduler.scale_noise(
                         init_latents_proper, torch.tensor([noise_timestep]), noise
                     )
-
+                if i<mask_timestep:
                     latents = (1 - init_mask) * init_latents_proper + init_mask * latents
 
                 if latents.dtype != latents_dtype:

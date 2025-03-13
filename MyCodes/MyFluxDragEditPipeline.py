@@ -672,7 +672,7 @@ class FluxDragEditPipeline(FluxInpaintPipeline):
     
     @torch.no_grad()
     @replace_example_docstring(EXAMPLE_DOC_STRING)
-    def call(
+    def gen(
         self,
         prompt: Union[str, List[str]] = None,
         prompt_2: Optional[Union[str, List[str]]] = None,

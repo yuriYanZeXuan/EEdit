@@ -1,4 +1,4 @@
-# EEdit ⚡️
+# EEdit ⚡️：Rethinking the Spatial and Temporal Redundancy for Efficient Image Editing
 <div align="center" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
     <a href="#">Zexuan Yan</a><sup>*</sup> &nbsp;•&nbsp;
     <a href="#">Yue Ma</a><sup>*</sup> &nbsp;•&nbsp;
@@ -15,7 +15,25 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2403.18162-b31b1b.svg)](https://arxiv.org/abs/2503.10270)
 [![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://eff-edit.github.io/)
 
-EEdit ⚡️ : Rethinking the Spatial and Temporal Redundancy for Efficient Image Editing
+## Introduction
+<div align="center">
+    <img src="static/teaser.png" alt="EEdit Teaser" width="100%">
+</div>
+<div align="center">
+    <img src="static/pipeline.png" alt="EEdit Teaser" width="100%">
+</div>
+
+Inversion-based image editing is rapidly gaining momentum while suffering from significant computation overhead, hindering its application in real-time interactive scenarios. In this paper, we rethink that the redundancy in inversion-based image editing exists in both the spatial and temporal dimensions, such as the unnecessary computation in unedited regions and the redundancy in the inversion progress.
+
+To tackle these challenges, we propose a practical framework, named EEdit, to achieve efficient image editing. Specifically, we introduce three techniques to solve them one by one:
+- For spatial redundancy, **spatial locality caching** is introduced to compute the edited region and its neighboring regions while skipping the unedited regions
+- **Token indexing preprocessing** is designed to further accelerate the caching
+- For temporal redundancy, **inversion step skipping** is proposed to reuse the latent for efficient editing
+
+Our experiments demonstrate an average of **2.46X acceleration** without performance drop in a wide range of editing tasks including prompt-guided image editing, dragging and image composition.
+
+
+
 
 ## 🛠️ Installation
 ```bash

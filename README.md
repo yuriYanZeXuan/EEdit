@@ -1,5 +1,5 @@
 <div align="center">
-EEdit ⚡️：Rethinking the Spatial and Temporal Redundancy for Efficient Image Editing
+<h1>EEdit ⚡️：Rethinking the Spatial and Temporal Redundancy for Efficient Image Editing</h1>
 </div>
 <div align="center" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
     <a href="#">Zexuan Yan</a><sup>*</sup> &nbsp;•&nbsp;
@@ -21,9 +21,6 @@ EEdit ⚡️：Rethinking the Spatial and Temporal Redundancy for Efficient Imag
 <div align="center" style="background-color: white;">
     <img src="static/teaser.png" alt="EEdit Teaser" width="100%">
 </div>
-<div align="center" style="background-color: white;">
-    <img src="static/pipeline.png" alt="EEdit Teaser" width="100%">
-</div>
 
 Inversion-based image editing is rapidly gaining momentum while suffering from significant computation overhead, hindering its application in real-time interactive scenarios. In this paper, we rethink that the redundancy in inversion-based image editing exists in both the spatial and temporal dimensions, such as the unnecessary computation in unedited regions and the redundancy in the inversion progress.
 
@@ -33,7 +30,6 @@ To tackle these challenges, we propose a practical framework, named EEdit, to ac
 - For temporal redundancy, **inversion step skipping** is proposed to reuse the latent for efficient editing
 
 Our experiments demonstrate an average of **2.46X acceleration** without performance drop in a wide range of editing tasks including prompt-guided image editing, dragging and image composition.
-
 
 
 
@@ -62,6 +58,8 @@ For masks generated from mapping_file.json, we provide scripts that follows:
 ```bash
 python MyCodes/myutils.py
 ```
+
+When all the data and checkpoints are ready, please follow our file directory structure to be compatible with the scripts.
 
 <details>
 <summary>📁 Checkpoints Structure</summary>

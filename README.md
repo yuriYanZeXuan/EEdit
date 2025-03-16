@@ -1,4 +1,17 @@
 # EEdit ⚡️
+<div align="center" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+    <a href="#">Zexuan Yan</a><sup>*</sup> &nbsp;•&nbsp;
+    <a href="#">Yue Ma</a><sup>*</sup> &nbsp;•&nbsp;
+    <a href="#">Chang Zou</a> &nbsp;•&nbsp;
+    <a href="#">Wenteng Chen</a> &nbsp;•&nbsp;
+    <a href="#">Qifeng Chen</a> &nbsp;•&nbsp;
+    <a href="#">Linfeng Zhang</a><sup>†</sup>
+</div>
+<div align="center" style="font-size: 0.9em">
+    <sup>*</sup> Equal Contribution &nbsp;&nbsp;&nbsp; <sup>†</sup> Corresponding Author
+</div>
+
+
 [![arXiv](https://img.shields.io/badge/arXiv-2403.18162-b31b1b.svg)](https://arxiv.org/abs/2503.10270)
 [![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://eff-edit.github.io/)
 
@@ -12,10 +25,20 @@ pip install -r EEdit/requirements.txt
 ```
 
 ## 📥 Checkpoints & Datasets
+All model weights and datasets are from open-source, free and publicly available channels:
+
+We use FLUX-dev as our experimental model. You can obtain it from either:
+- Official Repository: https://github.com/black-forest-labs/flux
+- Hugging Face: https://huggingface.co/black-forest-labs/FLUX.1-dev
+
 We use PIE-BENCH as the prompt-guided dataset, you can refer to [link](https://forms.gle/hVMkTABb4uvZVjme9)
+
 We use TF-ICON benchmark as the ref-guided dataset, you can refer to [link](https://github.com/Shilin-LU/TF-ICON)
+
 We use DragBench-DR and Drag-Bench-SR as the drag-guided datasets, you can refer to [link](https://github.com/Visual-AI/RegionDrag)
+
 For masks generated from mapping_file.json, we provide scripts that follows:
+
 ```bash
 python MyCodes/myutils.py
 ```
@@ -133,7 +156,7 @@ cd EEdit && source run_gen.sh
 - Thanks to [Diffusers](https://github.com/huggingface/diffusers) for pipeline implementations
 - Thanks to [Region Drag](https://github.com/Visual-AI/RegionDrag) for dragging implementations
 
-## BibTeX
+## 📝 BibTeX
 ```tex
 @misc{yan2025eeditrethinkingspatial,
       title={EEdit : Rethinking the Spatial and Temporal Redundancy for Efficient Image Editing}, 

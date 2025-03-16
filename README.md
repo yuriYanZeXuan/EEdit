@@ -1,5 +1,8 @@
 # EEdit ⚡️
-EEdit: Rethinking the Spatial and Temporal Redundancy for Efficient Image Editing
+[![arXiv](https://img.shields.io/badge/arXiv-2403.18162-b31b1b.svg)](https://arxiv.org/abs/2503.10270)
+[![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://eff-edit.github.io/)
+
+EEdit ⚡️ : Rethinking the Spatial and Temporal Redundancy for Efficient Image Editing
 
 ## 🛠️ Installation
 ```bash
@@ -9,6 +12,9 @@ pip install -r EEdit/requirements.txt
 ```
 
 ## 📥 Checkpoints & Datasets
+We use PIE-BENCH as the prompt-guided dataset, you can refer to [link](https://forms.gle/hVMkTABb4uvZVjme9)
+We use TF-ICON benchmark as the ref-guided dataset, you can refer to [link](https://github.com/Shilin-LU/TF-ICON)
+We use DragBench-DR and Drag-Bench-SR as the drag-guided datasets, you can refer to [link](https://github.com/Visual-AI/RegionDrag)
 For masks generated from mapping_file.json, we provide scripts that follows:
 ```bash
 python MyCodes/myutils.py
@@ -126,6 +132,19 @@ cd EEdit && source run_gen.sh
 - Thanks to [ToCa](https://github.com/Shenyi-Z/ToCa) for cache implementations
 - Thanks to [Diffusers](https://github.com/huggingface/diffusers) for pipeline implementations
 - Thanks to [Region Drag](https://github.com/Visual-AI/RegionDrag) for dragging implementations
+
+## BibTeX
+```tex
+@misc{yan2025eeditrethinkingspatial,
+      title={EEdit : Rethinking the Spatial and Temporal Redundancy for Efficient Image Editing}, 
+      author={Zexuan Yan and Yue Ma and Chang Zou and Wenteng Chen and Qifeng Chen and Linfeng Zhang},
+      year={2025},
+      eprint={2503.10270},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2503.10270}, 
+}
+``` 
 
 ## 📧 Contact
 yzx_ustc@mail.ustc.edu.cn

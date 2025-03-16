@@ -1,4 +1,6 @@
-# EEdit ⚡️：Rethinking the Spatial and Temporal Redundancy for Efficient Image Editing
+<div align="center">
+EEdit ⚡️：Rethinking the Spatial and Temporal Redundancy for Efficient Image Editing
+</div>
 <div align="center" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
     <a href="#">Zexuan Yan</a><sup>*</sup> &nbsp;•&nbsp;
     <a href="#">Yue Ma</a><sup>*</sup> &nbsp;•&nbsp;
@@ -15,11 +17,11 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2403.18162-b31b1b.svg)](https://arxiv.org/abs/2503.10270)
 [![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://eff-edit.github.io/)
 
-## Introduction
-<div align="center">
+## 📝 Introduction
+<div align="center" style="background-color: white;">
     <img src="static/teaser.png" alt="EEdit Teaser" width="100%">
 </div>
-<div align="center">
+<div align="center" style="background-color: white;">
     <img src="static/pipeline.png" alt="EEdit Teaser" width="100%">
 </div>
 

@@ -169,6 +169,72 @@ input
 cd EEdit && source run_gen.sh
 ```
 
+## ✨ Hyper-parameters Guidance
+As we all know, edited results are affected by many parameters and even random seed. We try our best to explain those parameters and options that may affect image quality, so that you can generate satisfactory image editing results by yourself. 
+<details>
+<summary>Reference-guided editing (Image Composition)</summary>
+
+| Parameter | Value | Description |
+|-----------|--------|-------------|
+| eta | 0.6 | Controls the strength of inversion injection during denoising. Higher values preserve more of the original image. |
+| gamma | 0.6 | Controls the strength of inversion injection during denoising. Higher values preserve more of the original image. |
+| blend_ratio | 0 | Deprecated parameter, not in use. |
+| start_timestep | 0 | Fixed parameter, no adjustment needed. |
+| stop_timestep | 10 | Number of timesteps where inversion affects denoising. Higher values result in output closer to original image. |
+| use_rf_inversion | true | Fixed parameter, keep as true.  |
+| use_cache | true<br>false | Enable caching to accelerate inference. False will perform as non-accelerated pipeline. |
+| num_inference_steps | 28 | Number of inference steps in the diffusion process. |
+| cascade_num | 1/3/5 | Controls region score bonus for K-L1 distance neighboring regions. No adjustment needed. |
+| fresh_ratio | 0.1 | Cache refresh ratio. Fixed parameter, higher is not always better. |
+| fresh_threshold | 1/2/3 | Complete refresh interval. Set to 2 if edit results don't follow instructions well. Setting to 1 disables acceleration. |
+| soft_fresh_weight | 0.25 | Fixed parameter, no adjustment needed. |
+| tailing_step | 1 | Fixed parameter, higher values reduce speed. |
+| inv_skip | 2/3/4 | Inversion step skipping interval. Default value of 2 is ok. |
+| cache_type | "ours_predefine"<br>"ours_cache" | Use token index preprocessing for faster speed. "ours_cache" disables preprocessing. |
+
+</details>
+
+
+<details>
+
+<summary>Prompt-guided editing</summary>
+
+| Parameter | Value | Description |
+|-----------|--------|-------------|
+| use_cache | true | Enable caching mechanism to accelerate inference |
+| num_inference_steps | 28 | Total number of denoising steps in diffusion process |
+| cascade_num | 1/3/5 | Number of cascade levels for region scoring |
+| fresh_ratio | 0.1 | Ratio of cache entries to refresh each step, higher value caused lower speed. |
+| fresh_threshold | 2/3 | Interval for complete cache refresh |
+| soft_fresh_weight | 0.25 | Weight factor for soft cache refreshing |
+| tailing_step | 1 | Step interval for tailing cache updates |
+| strength | 1.0 | Fixed. Overall strength of the editing effect |
+| inv_skip | 2/3 | Interval for skipping inversion steps |
+| eta/gamma | 0.7 | Controls strength of inversion injection during denoising |
+| stop_timestep | 6 | Timestep to stop inversion influence |
+| mask_timestep | 18 | Timestep to end applying editing mask |
+| cache_type | "ours_predefine"<br>"ours_cache" | Cache strategy type - "ours_predefine" uses TIP while "ours_cache" does not.  |
+
+</details>
+
+
+<details>
+
+<summary>Drag-guided editing (some are ommited)</summary>
+
+| Parameter | Value | Description |
+|-----------|--------|-------------|
+| drag_class | "copy"/"cut" | Controls region handling - "copy" preserves source region latents, "cut" swaps source and target region latents |
+| t_prime_ratio | 0.5 | Controls dragging strength in (0,1) range. Higher values reduce dragging strength |
+| alpha | 1 | Noise blending ratio in (0,1) range applied to inversion latents |
+| inv_skip | 2/3 | Interval for skipping inversion steps |
+</details>
+
+## 📝 TODO List
+- Release evaluation code
+- Release notebook and Hugging Face demo
+- Develop more user-friendly interaction logic and experience, including Gradio interface
+
 ## 🙏 Acknowledgements
 - Thanks to [ToCa](https://github.com/Shenyi-Z/ToCa) for cache implementations
 - Thanks to [Diffusers](https://github.com/huggingface/diffusers) for pipeline implementations

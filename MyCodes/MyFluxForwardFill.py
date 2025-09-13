@@ -64,7 +64,8 @@ def forward(
     adaln_embed = pooled_projections
     
     # 6. Rotary Positional Embeddings
-    image_rotary_emb = self.pos_embed(img_ids)
+    ids = torch.cat((txt_ids, img_ids), dim=0)
+    image_rotary_emb = self.pos_embed(ids)
     
     # 7. Cache Initialization and Loop
     if joint_attention_kwargs.get('use_cache', False):

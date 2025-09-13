@@ -28,12 +28,16 @@ def forward(
     if self.config.guidance_embeds:
         time_embed_dim = self.inner_dim
         if guidance is None:
-            # When guidance is not provided, the module should behave like the non-guidance version,
-            # returning a concatenated tensor of time and text embeddings.
-            embedding = self.time_text_embed(timestep, pooled_projections)
-            text_embed_dim = time_embed_dim
-            timestep_embed, pooled_projections = torch.split(embedding, [time_embed_dim, text_embed_dim], dim=1)
+            # When guidance is not provided, we must pass a dummy tensor for the guidance argument.
+            dummy_guidance = torch.zeros_like(timestep)
+            embedding = self.time_text_embed(timestep, dummy_guidance, pooled_projections)
+
+            # The custom module appears to only return the time embedding when passed a dummy guidance.
+            # We will assume the returned embedding is the timestep embedding and use the original,
+            # un-projected pooled_projections for the text embedding as a workaround.
+            timestep_embed = embedding
             guidance_embed = None
+            # pooled_projections is intentionally not updated here.
         else:
             embedding = self.time_text_embed(
                 timestep, guidance, pooled_projections

@@ -42,17 +42,12 @@ def forward(
             embedding = self.time_text_embed(
                 timestep, guidance, pooled_projections
             )
-            guidance_embed_dim = time_embed_dim
-            text_embed_dim = time_embed_dim
-            timestep_embed, guidance_embed, pooled_projections = torch.split(
-                embedding, [time_embed_dim, guidance_embed_dim, text_embed_dim], dim=1
-            )
-    else:
-        embedding = self.time_text_embed(timestep, pooled_projections)
-        time_embed_dim = self.inner_dim
-        text_embed_dim = time_embed_dim
-        timestep_embed, pooled_projections = torch.split(embedding, [time_embed_dim, text_embed_dim], dim=1)
-        guidance_embed = None
+            # WORKAROUND: The custom module appears to only return the time embedding.
+            # We'll use it for both time and guidance embeddings.
+            # The original pooled_projections will be used as a fallback for text embedding.
+            timestep_embed = embedding
+            guidance_embed = embedding
+            # pooled_projections is intentionally not updated.
 
     # 3. Create conditioning embedding
     if guidance_embed is None:

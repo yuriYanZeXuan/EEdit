@@ -437,7 +437,7 @@ class FluxFillPipeline(
         if masked_image.shape[1] == num_channels_latents:
             masked_image_latents = masked_image
         else:
-            masked_image_latents = retrieve_latents(self.vae.encode(masked_image), generator=generator)
+            masked_image_latents = retrieve_latents(self.vae.encode(masked_image.to(self.vae.dtype)), generator=generator)
 
         masked_image_latents = (masked_image_latents - self.vae.config.shift_factor) * self.vae.config.scaling_factor
         masked_image_latents = masked_image_latents.to(device=device, dtype=dtype)

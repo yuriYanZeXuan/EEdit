@@ -26,7 +26,7 @@ def forward(
     
     # 2. Time, text and guidance embedding
     if self.config.guidance_embeds:
-        time_embed_dim = self.time_text_embed.time_proj.time_embed_dim
+        time_embed_dim = self.inner_dim
         if guidance is None:
             embedding = self.time_text_embed(timestep, None, pooled_projections)
             text_embed_dim = time_embed_dim
@@ -43,7 +43,7 @@ def forward(
             )
     else:
         embedding = self.time_text_embed(timestep, pooled_projections)
-        time_embed_dim = self.time_text_embed.time_proj.time_embed_dim
+        time_embed_dim = self.inner_dim
         text_embed_dim = time_embed_dim
         timestep_embed, pooled_projections = torch.split(embedding, [time_embed_dim, text_embed_dim], dim=1)
         guidance_embed = None

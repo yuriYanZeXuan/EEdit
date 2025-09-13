@@ -436,10 +436,12 @@ class FluxTransformer2DModel(ModelMixin, ConfigMixin, PeftAdapterMixin, MyFromOr
         pooled_projection_dim: int = 768,
         guidance_embeds: bool = False,
         axes_dims_rope: Tuple[int] = (16, 56, 56),
+        out_channels: Optional[int] = None, # Make compatible with different configs
     ):
         super().__init__()
         print("init with MyFluxAttnProcessor2_0")
-        self.out_channels = in_channels
+        # Use out_channels if provided, otherwise fall back to in_channels
+        self.out_channels = out_channels if out_channels is not None else in_channels
         self.inner_dim = self.config.num_attention_heads * self.config.attention_head_dim
 
         self.pos_embed = FluxPosEmbed(theta=10000, axes_dim=axes_dims_rope)

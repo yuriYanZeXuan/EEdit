@@ -1,6 +1,7 @@
 from typing import Optional
 import torch
 import numpy as np
+from PIL import Image
 
 
 def edit_region_parser(
@@ -140,38 +141,38 @@ def edit_pts_parser(
     
 def edit_mask_parser(
     mask,
-    resolution: Optional[int] = 512,
+    height,
+    width,
     vae_scale_factor=16,
     cascade_num=3,
-    height=512,
-    width=512,
 ):
     if cascade_num == 0:
         return None
-    if height is None:
-        height=resolution
-    if width is None:
-        width=resolution
+
     edit_idx = [[] for _ in range(cascade_num)]
-    scaled_resolution = resolution // vae_scale_factor
-    scaled_width=width//vae_scale_factor
-    scaled_height=height//vae_scale_factor
+    scaled_width = width // vae_scale_factor
+    scaled_height = height // vae_scale_factor
+
     if not isinstance(mask, np.ndarray):
         mask = np.array(mask)
     
     if len(mask.shape) > 2:
         mask = mask.mean(axis=2)  
-        
-    scaled_mask = mask[::vae_scale_factor, ::vae_scale_factor]
+    
+    # Resize the mask to the target latent dimensions using PIL for proper interpolation
+    # This is more robust than simple striding (e.g., ::16) for non-divisible dimensions.
+    mask_pil = Image.fromarray(mask.astype(np.uint8))
+    scaled_mask_pil = mask_pil.resize((scaled_width, scaled_height), Image.NEAREST)
+    scaled_mask = np.array(scaled_mask_pil)
     
     indices = set()
-    h, w = scaled_mask.shape
-    for i in range(h):
-        for j in range(w):
+    # The loops now correctly use the calculated scaled_height and scaled_width
+    for i in range(scaled_height): # Corresponds to y
+        for j in range(scaled_width): # Corresponds to x
             if scaled_mask[i, j] > 0:
-                indices.add((j, i)) # NOTE: The original code might have had a bug here. indices are usually (x, y) which corresponds to (w, h) or (j, i)
+                indices.add((j, i)) # Add as (x, y)
                 
-    edit_idx[0] = [x + y * scaled_width for x, y in indices if 0 <= x < scaled_width and 0 <= y < scaled_height]
+    edit_idx[0] = [x + y * scaled_width for x, y in indices]
     edit_idx[0]=torch.tensor(list(set(edit_idx[0])))
     
     region_set = indices.copy()
@@ -339,14 +340,10 @@ def edit_ratio_parser(
             del edit_idx[k]
     return edit_idx
 
-def convert_to_cache_index(edit_idx,edit_base=2,bonus_ratio=0.8,resolution=512,vae_scale_factor=16,height=None,width=None):
-    assert resolution in [512,1024,2048,None], "resolution must be 512 or 1024 or 2048 or None"
-    if resolution is None:
-        resolution=max(height,width)
-    if width is None:
-        width=resolution
-    if height is None:
-        height=resolution
+def convert_to_cache_index(edit_idx,edit_base=2,bonus_ratio=0.8,resolution=None,vae_scale_factor=16,height=None,width=None):
+    if width is None or height is None:
+        raise ValueError("Height and width must be provided to convert_to_cache_index")
+
     scaled_width=width//vae_scale_factor
     scaled_height=height//vae_scale_factor
     score=torch.ones(scaled_width*scaled_height)

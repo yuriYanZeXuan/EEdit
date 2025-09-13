@@ -127,9 +127,9 @@ def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_st
         }
         
         print("Step 3: Initializing cache...")
-        edit_idx = edit_mask_parser(mask_image, cascade_num=param['cascade_num'])
+        edit_idx = edit_mask_parser(mask_image, cascade_num=param['cascade_num'], height=height, width=width)
         cache_dic, current = cache_init(model_kwargs, param['num_inference_steps'], edit_idx)
-        current['edit_idx_merged'] = convert_to_cache_index(edit_idx, edit_base=param.get('edit_base', 2), bonus_ratio=param.get('bonus_ratio', 0.8))
+        current['edit_idx_merged'] = convert_to_cache_index(edit_idx, edit_base=param.get('edit_base', 2), bonus_ratio=param.get('bonus_ratio', 0.8), height=height, width=width)
         current['edit_idx_merged'] = current['edit_idx_merged'].to("cuda")
 
         if cache_type == 'ours_predefine':

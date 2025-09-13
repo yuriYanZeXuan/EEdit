@@ -301,7 +301,7 @@ class FluxFillPipeline(
                 transformer_input = torch.cat((Y_t, masked_image_latents_with_mask), dim=2)
                 u_t_i = self.transformer(
                     hidden_states=transformer_input, 
-                    timestep=t_i.repeat(batch_size), 
+                    timestep=t_i, 
                     guidance=guidance,
                     pooled_projections=null_pooled_prompt_embeds,
                     encoder_hidden_states=null_prompt_embeds,

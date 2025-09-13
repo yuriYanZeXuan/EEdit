@@ -25,16 +25,17 @@ def forward(
     hidden_states = self.x_embedder(hidden_states)
     
     # 2. Time, text and guidance embedding
-    embedding = self.time_text_embed(
-        timestep, guidance, pooled_projections
-    )
     if self.config.guidance_embeds:
         if guidance is None:
-            timestep_embed, pooled_projections = embedding
+            timestep_embed = self.time_text_embed.time_proj(timestep)
+            pooled_projections = self.time_text_embed.text_proj(pooled_projections)
             guidance_embed = None
         else:
-            timestep_embed, guidance_embed, pooled_projections = embedding
+            timestep_embed, guidance_embed, pooled_projections = self.time_text_embed(
+                timestep, guidance, pooled_projections
+            )
     else:
+        embedding = self.time_text_embed(timestep, None, pooled_projections)
         time_embed_dim = self.time_text_embed.time_proj.time_embed_dim
         text_embed_dim = self.time_text_embed.text_proj.out_features
         timestep_embed, pooled_projections = torch.split(embedding, [time_embed_dim, text_embed_dim], dim=1)
@@ -42,8 +43,6 @@ def forward(
 
     # 3. Create conditioning embedding
     if guidance_embed is None:
-        cond_embed = timestep_embed
-    elif guidance is None:
         cond_embed = timestep_embed
     else:
         cond_embed = timestep_embed + guidance_embed * guidance.to(timestep_embed.dtype).reshape(-1, 1)

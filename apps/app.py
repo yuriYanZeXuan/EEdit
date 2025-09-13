@@ -15,7 +15,7 @@ from MyCodes.MyFluxInpaintPipeline import FluxInpaintPipeline
 from transformers import T5EncoderModel
 from diffusers.utils import load_image
 import importlib
-from MyCodes import MyFluxForward
+from MyCodes import MyFluxForwardFill # Import the new forward pass
 import types
 
 # --- Global Settings & Model Pre-loading ---
@@ -52,7 +52,8 @@ def load_models(weights_dir, dtype=torch.bfloat16):
         pipe_instance.transformer = transformer
         pipe_instance.text_encoder_2 = text_encoder_2
         
-        pipe_instance.transformer.forward = types.MethodType(MyFluxForward.forward, pipe_instance.transformer)
+        # Apply the new, compatible forward pass for the flux-fill model
+        pipe_instance.transformer.forward = types.MethodType(MyFluxForwardFill.forward, pipe_instance.transformer)
         pipe_instance.to('cuda')
         pipe = pipe_instance
         print("Models loaded successfully.")

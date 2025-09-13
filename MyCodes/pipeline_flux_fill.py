@@ -99,6 +99,7 @@ def retrieve_timesteps(
     device: Optional[Union[str, torch.device]] = None,
     timesteps: Optional[List[int]] = None,
     sigmas: Optional[List[float]] = None,
+    mu: Optional[float] = None,
     **kwargs,
 ):
     r"""
@@ -118,6 +119,9 @@ def retrieve_timesteps(
             `num_inference_steps` and `sigmas` must be `None`.
         sigmas (`List[float]`, *optional*):
             Custom sigmas used to override the timestep spacing strategy of the scheduler. If `sigmas` is passed,
+            `num_inference_steps` and `timesteps` must be `None`.
+        mu (`float`, *optional*):
+            Custom mu used to override the timestep spacing strategy of the scheduler. If `mu` is passed,
             `num_inference_steps` and `timesteps` must be `None`.
 
     Returns:
@@ -144,6 +148,16 @@ def retrieve_timesteps(
                 f" sigmas schedules. Please check whether you are using the correct scheduler."
             )
         scheduler.set_timesteps(sigmas=sigmas, device=device, **kwargs)
+        timesteps = scheduler.timesteps
+        num_inference_steps = len(timesteps)
+    elif mu is not None:
+        accept_mu = "mu" in set(inspect.signature(scheduler.set_timesteps).parameters.keys())
+        if not accept_mu:
+            raise ValueError(
+                f"The current scheduler class {scheduler.__class__}'s `set_timesteps` does not support custom"
+                f" mu schedules. Please check whether you are using the correct scheduler."
+            )
+        scheduler.set_timesteps(mu=mu, device=device, **kwargs)
         timesteps = scheduler.timesteps
         num_inference_steps = len(timesteps)
     else:
@@ -256,7 +270,7 @@ class FluxFillPipeline(
                                width,
                                joint_attention_kwargs,
                                skip_T=1,
-                               mask=None,
+                               masked_image_latents_with_mask=None,
                                ):
 
         """
@@ -282,8 +296,10 @@ class FluxFillPipeline(
             t_i = torch.tensor(i / (N), dtype=Y_t.dtype, device=device)
             dt = torch.tensor(1 / (N), dtype=Y_t.dtype, device=device)
             if i % skip_T == 0 or i == N-2:
+
+                transformer_input = torch.cat((Y_t, masked_image_latents_with_mask), dim=2)
                 u_t_i = self.transformer(
-                    hidden_states=Y_t, 
+                    hidden_states=transformer_input, 
                     timestep=t_i.repeat(batch_size), 
                     guidance=guidance,
                     pooled_projections=null_pooled_prompt_embeds,
@@ -410,28 +426,23 @@ class FluxFillPipeline(
         device,
         generator,
     ):
+        # 1. calculate the height and width of the latents
         # VAE applies 8x compression on images but we must also account for packing which requires
         # latent height and width to be divisible by 2.
         height = 2 * (int(height) // (self.vae_scale_factor * 2))
         width = 2 * (int(width) // (self.vae_scale_factor * 2))
-        # resize the mask to latents shape as we concatenate the mask to the latents
-        # we do that before converting to dtype to avoid breaking in case we're using cpu_offload
-        # and half precision
-        mask = torch.nn.functional.interpolate(mask, size=(height, width))
-        mask = mask.to(device=device, dtype=dtype)
 
-        batch_size = batch_size * num_images_per_prompt
-
-        masked_image = masked_image.to(device=device, dtype=dtype)
-
-        if masked_image.shape[1] == 16:
+        # 2. encode the masked image
+        if masked_image.shape[1] == num_channels_latents:
             masked_image_latents = masked_image
         else:
             masked_image_latents = retrieve_latents(self.vae.encode(masked_image), generator=generator)
 
         masked_image_latents = (masked_image_latents - self.vae.config.shift_factor) * self.vae.config.scaling_factor
+        masked_image_latents = masked_image_latents.to(device=device, dtype=dtype)
 
-        # duplicate mask and masked_image_latents for each generation per prompt, using mps friendly method
+        # 3. duplicate mask and masked_image_latents for each generation per prompt, using mps friendly method
+        batch_size = batch_size * num_images_per_prompt
         if mask.shape[0] < batch_size:
             if not batch_size % mask.shape[0] == 0:
                 raise ValueError(
@@ -449,8 +460,8 @@ class FluxFillPipeline(
                 )
             masked_image_latents = masked_image_latents.repeat(batch_size // masked_image_latents.shape[0], 1, 1, 1)
 
-        # aligning device to prevent device errors when concating it with the latent model input
-        masked_image_latents = masked_image_latents.to(device=device, dtype=dtype)
+        # 4. pack the masked_image_latents
+        # batch_size, num_channels_latents, height, width -> batch_size, height//2 * width//2 , num_channels_latents*4
         masked_image_latents = self._pack_latents(
             masked_image_latents,
             batch_size,
@@ -458,16 +469,30 @@ class FluxFillPipeline(
             height,
             width,
         )
+
+        # 5.resize mask to latents shape we we concatenate the mask to the latents
+        mask = mask[:, 0, :, :]  # batch_size, 8 * height, 8 * width (mask has not been 8x compressed)
+        mask = mask.view(
+            batch_size, height, self.vae_scale_factor, width, self.vae_scale_factor
+        )  # batch_size, height, 8, width, 8
+        mask = mask.permute(0, 2, 4, 1, 3)  # batch_size, 8, 8, height, width
+        mask = mask.reshape(
+            batch_size, self.vae_scale_factor * self.vae_scale_factor, height, width
+        )  # batch_size, 8*8, height, width
+
+        # 6. pack the mask:
+        # batch_size, 64, height, width -> batch_size, height//2 * width//2 , 64*2*2
         mask = self._pack_latents(
-            mask.repeat(1, num_channels_latents, 1, 1),
+            mask,
             batch_size,
-            num_channels_latents,
+            self.vae_scale_factor * self.vae_scale_factor,
             height,
             width,
         )
+        mask = mask.to(device=device, dtype=dtype)
 
         return mask, masked_image_latents
-    
+
     # Copied from diffusers.pipelines.flux.pipeline_flux.FluxPipeline.encode_prompt
     def encode_prompt(
         self,
@@ -570,10 +595,11 @@ class FluxFillPipeline(
 
         t_start = int(max(num_inference_steps - init_timestep, 0))
         timesteps = self.scheduler.timesteps[t_start * self.scheduler.order :]
+        sigmas = self.scheduler.sigmas[t_start * self.scheduler.order :]
         if hasattr(self.scheduler, "set_begin_index"):
             self.scheduler.set_begin_index(t_start * self.scheduler.order)
 
-        return timesteps, num_inference_steps - t_start
+        return timesteps, sigmas, num_inference_steps - t_start
 
     def check_inputs(
         self,
@@ -1002,7 +1028,22 @@ class FluxFillPipeline(
         )
 
         # 4. Prepare timesteps
-        timesteps, num_inference_steps = self.get_timesteps(num_inference_steps, strength, device)
+        image_seq_len = (int(height) // self.vae_scale_factor // 2) * (int(width) // self.vae_scale_factor // 2)
+        mu = calculate_shift(
+            image_seq_len,
+            self.scheduler.config.get("base_image_seq_len", 256),
+            self.scheduler.config.get("max_image_seq_len", 4096),
+            self.scheduler.config.get("base_shift", 0.5),
+            self.scheduler.config.get("max_shift", 1.15),
+        )
+        timesteps, sigmas, num_inference_steps = retrieve_timesteps(
+            self.scheduler,
+            num_inference_steps,
+            device,
+            sigmas=sigmas,
+            mu=mu,
+        )
+        timesteps, sigmas, num_inference_steps = self.get_timesteps(num_inference_steps, strength, device)
 
         if num_inference_steps < 1:
             raise ValueError(
@@ -1030,22 +1071,24 @@ class FluxFillPipeline(
         mask_condition = self.mask_processor.preprocess(mask_image, height=height, width=width)
 
         if masked_image_latents is None:
-            masked_image = init_image * (mask_condition < 0.5)
+            masked_image = init_image * (1 - mask_condition)
         else:
             masked_image = masked_image_latents
             
         mask, masked_image_latents = self.prepare_mask_latents(
             mask_condition,
             masked_image,
-            batch_size,
+            batch_size * num_images_per_prompt,
             num_channels_latents,
-            num_images_per_prompt,
+            1,
             height,
             width,
             prompt_embeds.dtype,
             device,
             generator,
         )
+
+        masked_image_latents_with_mask = torch.cat((masked_image_latents, mask), dim=-1)
 
         num_warmup_steps = max(len(timesteps) - num_inference_steps * self.scheduler.order, 0)
         self._num_timesteps = len(timesteps)
@@ -1072,7 +1115,7 @@ class FluxFillPipeline(
                 width=width,
                 joint_attention_kwargs=joint_attention_kwargs,
                 skip_T=skip_T,
-                mask=mask,
+                masked_image_latents_with_mask=masked_image_latents_with_mask,
             )
 
         # 7. Denoising loop
@@ -1090,8 +1133,11 @@ class FluxFillPipeline(
                     t_i = 1 - t / 1000
                     if self.interrupt:
                         continue
+                    
+                    transformer_input = torch.cat((latents, masked_image_latents_with_mask), dim=2)
+
                     noise_pred = self.transformer(
-                        hidden_states=latents,
+                        hidden_states=transformer_input,
                         timestep=timestep / 1000,
                         guidance=guidance,
                         pooled_projections=pooled_prompt_embeds,

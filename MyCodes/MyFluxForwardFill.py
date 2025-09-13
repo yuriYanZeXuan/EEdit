@@ -71,6 +71,9 @@ def forward(
         current = joint_attention_kwargs['current']
         current['num_blocks'] = len(self.transformer_blocks) + len(self.single_transformer_blocks)
 
+    if encoder_hidden_states is not None:
+        encoder_hidden_states = self.context_embedder(encoder_hidden_states)
+
     # 8. Main Transformer Blocks
     for i, block in enumerate(self.transformer_blocks):
         if joint_attention_kwargs.get('use_cache', False):

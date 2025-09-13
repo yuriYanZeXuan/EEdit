@@ -163,7 +163,8 @@ def retrieve_timesteps(
     else:
         scheduler.set_timesteps(num_inference_steps, device=device, **kwargs)
         timesteps = scheduler.timesteps
-    return timesteps, num_inference_steps
+    sigmas = scheduler.sigmas
+    return timesteps, sigmas, num_inference_steps
 
 
 # Copied from diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion_img2img.retrieve_latents

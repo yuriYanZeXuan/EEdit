@@ -79,7 +79,7 @@ def forward(
         encoder_hidden_states, hidden_states = block(
             hidden_states=hidden_states,
             encoder_hidden_states=encoder_hidden_states,
-            temb=cond_embed.unsqueeze(1),
+            temb=cond_embed,
             image_rotary_emb=image_rotary_emb,
             joint_attention_kwargs=joint_attention_kwargs,
         )
@@ -91,7 +91,7 @@ def forward(
         
         hidden_states = block(
             hidden_states=hidden_states,
-            temb=cond_embed.unsqueeze(1),
+            temb=cond_embed,
             image_rotary_emb=image_rotary_emb,
             joint_attention_kwargs=joint_attention_kwargs,
         )

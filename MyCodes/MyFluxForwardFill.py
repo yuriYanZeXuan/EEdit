@@ -64,9 +64,10 @@ def forward(
     adaln_embed = pooled_projections
     
     # 6. Rotary Positional Embeddings
-    ids = torch.cat((txt_ids, img_ids), dim=0)
-    image_rotary_emb = self.pos_embed(ids)
-    
+    joint_ids = torch.cat((txt_ids, img_ids), dim=0)
+    joint_rotary_emb = self.pos_embed(joint_ids)
+    image_only_rotary_emb = self.pos_embed(img_ids)
+
     # 7. Cache Initialization and Loop
     if joint_attention_kwargs.get('use_cache', False):
         current = joint_attention_kwargs['current']
@@ -84,7 +85,7 @@ def forward(
             hidden_states=hidden_states,
             encoder_hidden_states=encoder_hidden_states,
             temb=cond_embed,
-            image_rotary_emb=image_rotary_emb,
+            image_rotary_emb=joint_rotary_emb,
             joint_attention_kwargs=joint_attention_kwargs,
         )
 
@@ -96,7 +97,7 @@ def forward(
         hidden_states = block(
             hidden_states=hidden_states,
             temb=cond_embed,
-            image_rotary_emb=image_rotary_emb,
+            image_rotary_emb=image_only_rotary_emb,
             joint_attention_kwargs=joint_attention_kwargs,
         )
 

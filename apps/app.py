@@ -5,6 +5,7 @@ import numpy as np
 import os
 import sys
 from pathlib import Path
+import traceback
 
 # Add project root to sys.path to allow imports from other directories
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -60,92 +61,112 @@ def load_models(weights_dir, dtype=torch.bfloat16):
 
 # --- Image Generation (adapted from inpaint_gen.py) ---
 def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_steps, weights_dir):
-    pipe = load_models(weights_dir)
-    if pipe is None:
-        raise gr.Error("Failed to load models. Check the weights directory path.")
+    try:
+        print("--- [START] Image Generation ---")
+        
+        print("Step 1: Loading models...")
+        pipe = load_models(weights_dir)
+        if pipe is None:
+            raise gr.Error("Failed to load models. Check the weights directory path and console for specific errors.")
+        print("Step 1: Models loaded successfully.")
 
-    if input_dict["background"] is None:
-        raise gr.Error("Please upload an image.")
-    if input_dict["layers"] is None:
-        raise gr.Error("Please draw a mask on the image.")
+        print("Step 2: Processing inputs...")
+        if input_dict["background"] is None:
+            raise gr.Error("Please upload an image.")
+        if input_dict["layers"] is None or len(input_dict["layers"]) == 0:
+            raise gr.Error("Please draw a mask on the image.")
 
-    main_image = Image.fromarray(input_dict["background"]).convert("RGB")
-    
-    # The mask is the drawn layer. It's RGBA, we take the alpha channel.
-    mask_layer = input_dict["layers"][0]
-    mask_array = mask_layer[:, :, 3]  # Alpha channel
-    mask_image = Image.fromarray(mask_array).convert("RGB")
+        main_image = Image.fromarray(input_dict["background"]).convert("RGB")
+        
+        mask_layer = input_dict["layers"][0]
+        # Check if the mask is empty (all alpha values are 0)
+        if np.all(mask_layer[:, :, 3] == 0):
+             raise gr.Error("The drawn mask is empty. Please draw on the area you want to inpaint.")
+
+        # The mask is the drawn layer. It's RGBA, we take the alpha channel.
+        mask_array = mask_layer[:, :, 3]  # Alpha channel
+        mask_image = Image.fromarray(mask_array).convert("RGB")
+        print("Step 2: Inputs processed successfully.")
 
 
-    height, width = main_image.height, main_image.width
+        height, width = main_image.height, main_image.width
 
-    # Using default parameters from cache_configs.json and allowing some to be controlled by UI
-    param = {
-        "use_cache": True,
-        "num_inference_steps": int(num_inference_steps),
-        "cascade_num": 3,
-        "fresh_ratio": 0.1,
-        "fresh_threshold": 3,
-        "soft_fresh_weight": 0.25,
-        "tailing_step": 1,
-        "strength": strength,
-        "inv_skip": 3,
-        "eta": 0.7,
-        "gamma": 0.7,
-        "stop_timestep": 6,
-        "mask_timestep": int(mask_timestep),
-        "cache_type": "ours_predefine"
-    }
+        # Using default parameters from cache_configs.json and allowing some to be controlled by UI
+        param = {
+            "use_cache": True,
+            "num_inference_steps": int(num_inference_steps),
+            "cascade_num": 3,
+            "fresh_ratio": 0.1,
+            "fresh_threshold": 3,
+            "soft_fresh_weight": 0.25,
+            "tailing_step": 1,
+            "strength": strength,
+            "inv_skip": 3,
+            "eta": 0.7,
+            "gamma": 0.7,
+            "stop_timestep": 6,
+            "mask_timestep": int(mask_timestep),
+            "cache_type": "ours_predefine"
+        }
 
-    cache_type = param['cache_type']
-    ratio_scheduler = 'constant'
-    use_attn_map = False
+        cache_type = param['cache_type']
+        ratio_scheduler = 'constant'
+        use_attn_map = False
 
-    model_kwargs = {
-        'fresh_ratio': param['fresh_ratio'],
-        'cache_type': cache_type,
-        'ratio_scheduler': ratio_scheduler,
-        'force_fresh': 'global',
-        'fresh_threshold': param['fresh_threshold'],
-        'soft_fresh_weight': param['soft_fresh_weight'],
-        'tailing_step': param['tailing_step'],
-        'hw': (height // 16, width // 16)
-    }
-    
-    edit_idx = edit_mask_parser(mask_image, cascade_num=param['cascade_num'])
-    cache_dic, current = cache_init(model_kwargs, param['num_inference_steps'], edit_idx)
-    current['edit_idx_merged'] = convert_to_cache_index(edit_idx, edit_base=param.get('edit_base', 2), bonus_ratio=param.get('bonus_ratio', 0.8))
-    current['edit_idx_merged'] = current['edit_idx_merged'].to("cuda")
+        model_kwargs = {
+            'fresh_ratio': param['fresh_ratio'],
+            'cache_type': cache_type,
+            'ratio_scheduler': ratio_scheduler,
+            'force_fresh': 'global',
+            'fresh_threshold': param['fresh_threshold'],
+            'soft_fresh_weight': param['soft_fresh_weight'],
+            'tailing_step': param['tailing_step'],
+            'hw': (height // 16, width // 16)
+        }
+        
+        print("Step 3: Initializing cache...")
+        edit_idx = edit_mask_parser(mask_image, cascade_num=param['cascade_num'])
+        cache_dic, current = cache_init(model_kwargs, param['num_inference_steps'], edit_idx)
+        current['edit_idx_merged'] = convert_to_cache_index(edit_idx, edit_base=param.get('edit_base', 2), bonus_ratio=param.get('bonus_ratio', 0.8))
+        current['edit_idx_merged'] = current['edit_idx_merged'].to("cuda")
 
-    if cache_type == 'ours_predefine':
-        predefine_cache_fresh_indices(cache_dic, current)
+        if cache_type == 'ours_predefine':
+            predefine_cache_fresh_indices(cache_dic, current)
+        print("Step 3: Cache initialized successfully.")
 
-    joint_attention_kwargs = {
-        'use_attn_map': use_attn_map,
-        'cache_dic': cache_dic,
-        'use_cache': param['use_cache'],
-        'current': current,
-    }
+        joint_attention_kwargs = {
+            'use_attn_map': use_attn_map,
+            'cache_dic': cache_dic,
+            'use_cache': param['use_cache'],
+            'current': current,
+        }
 
-    torch.manual_seed(42)
-    res = pipe.gen(
-        prompt=prompt,
-        image=main_image,
-        mask_image=mask_image,
-        num_inference_steps=param['num_inference_steps'],
-        strength=param['strength'],
-        height=height,
-        width=width,
-        joint_attention_kwargs=joint_attention_kwargs,
-        generator=torch.Generator(device='cuda').manual_seed(42),
-        eta=param['eta'],
-        gamma=param['gamma'],
-        skip_T=param['inv_skip'],
-        stop_timestep=param['stop_timestep'],
-        mask_timestep=param['mask_timestep']
-    )
-    
-    return res.images[0]
+        print("Step 4: Calling the generation pipeline...")
+        torch.manual_seed(42)
+        res = pipe.gen(
+            prompt=prompt,
+            image=main_image,
+            mask_image=mask_image,
+            num_inference_steps=param['num_inference_steps'],
+            strength=param['strength'],
+            height=height,
+            width=width,
+            joint_attention_kwargs=joint_attention_kwargs,
+            generator=torch.Generator(device='cuda').manual_seed(42),
+            eta=param['eta'],
+            gamma=param['gamma'],
+            skip_T=param['inv_skip'],
+            stop_timestep=param['stop_timestep'],
+            mask_timestep=param['mask_timestep']
+        )
+        print("Step 4: Generation pipeline finished.")
+        
+        print("--- [SUCCESS] Image Generation Complete ---")
+        return res.images[0]
+    except Exception as e:
+        print("--- [ERROR] An error occurred during generation ---")
+        traceback.print_exc()
+        raise gr.Error(f"An error occurred during the generation process. Please check the console for details. Error: {e}")
 
 # --- Gradio Interface ---
 with gr.Blocks() as demo:
@@ -184,4 +205,4 @@ with gr.Blocks() as demo:
     )
 
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch(share=True)

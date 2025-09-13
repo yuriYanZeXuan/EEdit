@@ -29,7 +29,11 @@ def forward(
         timestep, guidance, pooled_projections
     )
     if self.config.guidance_embeds:
-        timestep_embed, guidance_embed, pooled_projections = embedding
+        if guidance is None:
+            timestep_embed, pooled_projections = embedding
+            guidance_embed = None
+        else:
+            timestep_embed, guidance_embed, pooled_projections = embedding
     else:
         time_embed_dim = self.time_text_embed.time_proj.time_embed_dim
         text_embed_dim = self.time_text_embed.text_proj.out_features
@@ -38,6 +42,8 @@ def forward(
 
     # 3. Create conditioning embedding
     if guidance_embed is None:
+        cond_embed = timestep_embed
+    elif guidance is None:
         cond_embed = timestep_embed
     else:
         cond_embed = timestep_embed + guidance_embed * guidance.to(timestep_embed.dtype).reshape(-1, 1)
@@ -61,7 +67,7 @@ def forward(
         encoder_hidden_states, hidden_states = block(
             hidden_states=hidden_states,
             encoder_hidden_states=encoder_hidden_states,
-            temb=cond_embed,
+            temb=cond_embed.unsqueeze(1),
             image_rotary_emb=image_rotary_emb,
             joint_attention_kwargs=joint_attention_kwargs,
         )
@@ -73,7 +79,7 @@ def forward(
         
         hidden_states = block(
             hidden_states=hidden_states,
-            temb=cond_embed,
+            temb=cond_embed.unsqueeze(1),
             image_rotary_emb=image_rotary_emb,
             joint_attention_kwargs=joint_attention_kwargs,
         )

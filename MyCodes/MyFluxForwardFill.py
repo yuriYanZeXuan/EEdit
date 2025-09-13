@@ -24,22 +24,36 @@ def forward(
     # The original MyFluxForward was missing this step, causing a shape mismatch.
     hidden_states = self.x_embedder(hidden_states)
     
-    timestep_embed, guidance_embed, pooled_projections = self.time_text_embed(
+    # 2. Time, text and guidance embedding
+    embedding = self.time_text_embed(
         timestep, guidance, pooled_projections
     )
-    temb = (timestep_embed + guidance_embed).unsqueeze(1)
-    
-    encoder_hidden_states = self.context_embedder(encoder_hidden_states)
+    if self.config.guidance_embeds:
+        timestep_embed, guidance_embed, pooled_projections = embedding
+    else:
+        time_embed_dim = self.time_text_embed.time_proj.time_embed_dim
+        text_embed_dim = self.time_text_embed.text_proj.out_features
+        timestep_embed, pooled_projections = torch.split(embedding, [time_embed_dim, text_embed_dim], dim=1)
+        guidance_embed = None
 
-    # 2. Rotary Positional Embeddings
+    # 3. Create conditioning embedding
+    if guidance_embed is None:
+        cond_embed = timestep_embed
+    else:
+        cond_embed = timestep_embed + guidance_embed * guidance.to(timestep_embed.dtype).reshape(-1, 1)
+
+    # 4.-5. Post-process embeddings
+    adaln_embed = pooled_projections
+    
+    # 6. Rotary Positional Embeddings
     image_rotary_emb = self.pos_embed(img_ids)
     
-    # 3. Cache Initialization and Loop
+    # 7. Cache Initialization and Loop
     if joint_attention_kwargs.get('use_cache', False):
         current = joint_attention_kwargs['current']
         current['num_blocks'] = len(self.transformer_blocks) + len(self.single_transformer_blocks)
 
-    # 4. Main Transformer Blocks
+    # 8. Main Transformer Blocks
     for i, block in enumerate(self.transformer_blocks):
         if joint_attention_kwargs.get('use_cache', False):
             current['layer'] = i
@@ -47,25 +61,25 @@ def forward(
         encoder_hidden_states, hidden_states = block(
             hidden_states=hidden_states,
             encoder_hidden_states=encoder_hidden_states,
-            temb=temb,
+            temb=cond_embed,
             image_rotary_emb=image_rotary_emb,
             joint_attention_kwargs=joint_attention_kwargs,
         )
 
-    # 5. Single Transformer Blocks
+    # 9. Single Transformer Blocks
     for i, block in enumerate(self.single_transformer_blocks):
         if joint_attention_kwargs.get('use_cache', False):
             current['layer'] = i + len(self.transformer_blocks)
         
         hidden_states = block(
             hidden_states=hidden_states,
-            temb=temb,
+            temb=cond_embed,
             image_rotary_emb=image_rotary_emb,
             joint_attention_kwargs=joint_attention_kwargs,
         )
 
-    # 6. Output
-    hidden_states = self.norm_out(hidden_states, temb)
+    # 10. Output
+    hidden_states = self.norm_out(hidden_states, cond_embed)
     hidden_states = self.proj_out(hidden_states)
 
     if not return_dict:

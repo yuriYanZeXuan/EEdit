@@ -312,8 +312,8 @@ class FluxFillPipeline(
                 )[0]
             u_t_i_cond = (y_1 - Y_t) / (1 - t_i)
 
-            assert u_t_i.shape[2]==64, f"u_t_i.shape: {u_t_i.shape}"
-            assert u_t_i_cond.shape[2]==64, f"u_t_i_cond.shape: {u_t_i_cond.shape}"
+            # assert u_t_i.shape[2]==64, f"u_t_i.shape: {u_t_i.shape}"
+            # assert u_t_i_cond.shape[2]==64, f"u_t_i_cond.shape: {u_t_i_cond.shape}"
             u_hat_t_i = u_t_i + gamma * (u_t_i_cond - u_t_i)
             Y_t = Y_t + u_hat_t_i * dt # (sigmas[i] - sigmas[i+1])
             

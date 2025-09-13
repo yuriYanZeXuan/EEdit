@@ -165,12 +165,13 @@ def edit_mask_parser(
     scaled_mask = mask[::vae_scale_factor, ::vae_scale_factor]
     
     indices = set()
-    for i in range(scaled_resolution):
-        for j in range(scaled_resolution):
-            if scaled_mask[i,j] > 0:
-                indices.add((i,j))
+    h, w = scaled_mask.shape
+    for i in range(h):
+        for j in range(w):
+            if scaled_mask[i, j] > 0:
+                indices.add((j, i)) # NOTE: The original code might have had a bug here. indices are usually (x, y) which corresponds to (w, h) or (j, i)
                 
-    edit_idx[0] = [i+j*scaled_width  for i,j in indices if 0<=i<scaled_width and 0<=j<scaled_height]
+    edit_idx[0] = [x + y * scaled_width for x, y in indices if 0 <= x < scaled_width and 0 <= y < scaled_height]
     edit_idx[0]=torch.tensor(list(set(edit_idx[0])))
     
     region_set = indices.copy()

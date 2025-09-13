@@ -64,8 +64,18 @@ def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_st
     if pipe is None:
         raise gr.Error("Failed to load models. Check the weights directory path.")
 
-    main_image = Image.fromarray(input_dict["image"]).convert("RGB")
-    mask_image = Image.fromarray(input_dict["mask"]).convert("RGB")
+    if input_dict["background"] is None:
+        raise gr.Error("Please upload an image.")
+    if input_dict["layers"] is None:
+        raise gr.Error("Please draw a mask on the image.")
+
+    main_image = Image.fromarray(input_dict["background"]).convert("RGB")
+    
+    # The mask is the drawn layer. It's RGBA, we take the alpha channel.
+    mask_layer = input_dict["layers"][0]
+    mask_array = mask_layer[:, :, 3]  # Alpha channel
+    mask_image = Image.fromarray(mask_array).convert("RGB")
+
 
     height, width = main_image.height, main_image.width
 
@@ -144,7 +154,7 @@ with gr.Blocks() as demo:
 
     with gr.Row():
         with gr.Column():
-            image_input = gr.Image(tool="sketch", label="Image with Mask", type="numpy")
+            image_input = gr.ImageEditor(label="Image with Mask", type="numpy")
             prompt_input = gr.Textbox(label="Prompt", placeholder="Enter your prompt here...")
             weights_dir_input = gr.Textbox(
                 label="Weights Directory", 

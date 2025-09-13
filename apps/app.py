@@ -11,7 +11,7 @@ import traceback
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from cache_functions import *
-from MyCodes.MyFluxInpaintPipeline import FluxInpaintPipeline
+from MyCodes.pipeline_flux_fill import FluxFillPipeline
 from transformers import T5EncoderModel
 from diffusers.utils import load_image
 import importlib
@@ -43,7 +43,7 @@ def load_models(weights_dir, dtype=torch.bfloat16):
             torch_dtype=dtype,
             local_files_only=True)
 
-        pipe_instance = FluxInpaintPipeline.from_pretrained(
+        pipe_instance = FluxFillPipeline.from_pretrained(
             weights_dir, 
             transformer=None, 
             text_encoder_2=None, 
@@ -63,7 +63,7 @@ def load_models(weights_dir, dtype=torch.bfloat16):
         return None
 
 # --- Image Generation (adapted from inpaint_gen.py) ---
-def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_steps):
+def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_steps, use_rf_inversion, eta, gamma, start_timestep, stop_timestep):
     global pipe
     try:
         print("--- [START] Image Generation ---")
@@ -103,12 +103,7 @@ def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_st
             "fresh_threshold": 3,
             "soft_fresh_weight": 0.25,
             "tailing_step": 1,
-            "strength": strength,
             "inv_skip": 3,
-            "eta": 0.7,
-            "gamma": 0.7,
-            "stop_timestep": 6,
-            "mask_timestep": int(mask_timestep),
             "cache_type": "ours_predefine"
         }
 
@@ -146,21 +141,23 @@ def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_st
 
         print("Step 4: Calling the generation pipeline...")
         torch.manual_seed(42)
-        res = pipe.gen(
+        res = pipe(
             prompt=prompt,
             image=main_image,
             mask_image=mask_image,
             num_inference_steps=param['num_inference_steps'],
-            strength=param['strength'],
+            strength=strength,
             height=height,
             width=width,
             joint_attention_kwargs=joint_attention_kwargs,
             generator=torch.Generator(device='cuda').manual_seed(42),
-            eta=param['eta'],
-            gamma=param['gamma'],
+            use_rf_inversion=use_rf_inversion,
+            eta=eta,
+            gamma=gamma,
             skip_T=param['inv_skip'],
-            stop_timestep=param['stop_timestep'],
-            mask_timestep=param['mask_timestep']
+            start_timestep=int(start_timestep),
+            stop_timestep=int(stop_timestep),
+            mask_timestep=int(mask_timestep)
         )
         print("Step 4: Generation pipeline finished.")
         
@@ -184,9 +181,14 @@ with gr.Blocks() as demo:
         with gr.Column():
             image_output = gr.Image(label="Output Image")
     
-    with gr.Accordion("Advanced Settings", open=False):
+    with gr.Accordion("Advanced Settings", open=True):
+        use_rf_inversion_checkbox = gr.Checkbox(label="Use RF Inversion (Recommended)", value=True)
         strength_slider = gr.Slider(minimum=0.0, maximum=1.0, value=1.0, step=0.01, label="Strength")
-        mask_timestep_slider = gr.Slider(minimum=0, maximum=50, value=18, step=1, label="Mask Timestep (Cache Interval)")
+        eta_slider = gr.Slider(minimum=0.0, maximum=2.0, value=0.7, step=0.1, label="Eta (Inversion Guidance)")
+        gamma_slider = gr.Slider(minimum=0.0, maximum=2.0, value=0.7, step=0.1, label="Gamma (Inversion Noise)")
+        start_timestep_slider = gr.Slider(minimum=0, maximum=50, value=0, step=1, label="Start Timestep (Inversion)")
+        stop_timestep_slider = gr.Slider(minimum=0, maximum=50, value=6, step=1, label="Stop Timestep (Inversion)")
+        mask_timestep_slider = gr.Slider(minimum=0, maximum=50, value=18, step=1, label="Mask Timestep (Constraint)")
         steps_slider = gr.Slider(minimum=10, maximum=100, value=28, step=1, label="Number of Inference Steps")
 
     generate_button.click(
@@ -197,6 +199,11 @@ with gr.Blocks() as demo:
             strength_slider,
             mask_timestep_slider,
             steps_slider,
+            use_rf_inversion_checkbox,
+            eta_slider,
+            gamma_slider,
+            start_timestep_slider,
+            stop_timestep_slider,
         ],
         outputs=image_output
     )

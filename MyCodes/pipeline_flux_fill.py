@@ -157,7 +157,7 @@ def retrieve_timesteps(
                 f"The current scheduler class {scheduler.__class__}'s `set_timesteps` does not support custom"
                 f" mu schedules. Please check whether you are using the correct scheduler."
             )
-        scheduler.set_timesteps(mu=mu, device=device, **kwargs)
+        scheduler.set_timesteps(num_inference_steps=num_inference_steps, mu=mu, device=device, **kwargs)
         timesteps = scheduler.timesteps
         num_inference_steps = len(timesteps)
     else:

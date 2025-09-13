@@ -614,11 +614,14 @@ class FluxInpaintPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
         # latent height and width to be divisible by 2.
         height = 2 * (int(height) // (self.vae_scale_factor * 2))
         width = 2 * (int(width) // (self.vae_scale_factor * 2))
-        shape = (batch_size, num_channels_latents, height, width)
-        latent_image_ids = self._prepare_latent_image_ids(batch_size, height // 2, width // 2, device, dtype)
-
+        
         image = image.to(device=device, dtype=dtype)
         image_latents = self._encode_vae_image(image=image, generator=generator)
+        
+        # The shape of the noise should match the shape of the image_latents, not the transformer's input channels
+        shape = image_latents.shape
+        latent_image_ids = self._prepare_latent_image_ids(batch_size, height // 2, width // 2, device, dtype)
+
 
         if batch_size > image_latents.shape[0] and batch_size % image_latents.shape[0] == 0:
             # expand init_latents for batch_size
@@ -957,7 +960,7 @@ class FluxInpaintPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
             )
         latent_timestep = timesteps[:1].repeat(batch_size * num_images_per_prompt)
         # 5. Prepare latent variables
-        num_channels_latents = self.transformer.config.in_channels // 4
+        num_channels_latents = self.vae.config.latent_channels
         num_channels_transformer = self.transformer.config.in_channels
 
         latents, noise, image_latents, latent_image_ids = self.prepare_latents(

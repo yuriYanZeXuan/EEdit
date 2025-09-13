@@ -31,22 +31,24 @@ def load_models(weights_dir, dtype=torch.bfloat16):
     print("Loading models...")
     try:
         from MyCodes.FluxTransformer2DModel import FluxTransformer2DModel
-        transformer = FluxTransformer2DModel.from_single_file(
-            pretrained_model_link_or_path_or_dict=f"{weights_dir}/flux1-fill-dev.safetensors",
-            config=f"{weights_dir}/transformer_config.json",
+        transformer = FluxTransformer2DModel.from_pretrained(
+            weights_dir,
+            subfolder="transformer",
             torch_dtype=dtype,
             local_files_only=True)
         
         text_encoder_2 = T5EncoderModel.from_pretrained(
             weights_dir, 
             subfolder="text_encoder_2", 
-            torch_dtype=dtype)
+            torch_dtype=dtype,
+            local_files_only=True)
 
         pipe_instance = FluxInpaintPipeline.from_pretrained(
             weights_dir, 
             transformer=None, 
             text_encoder_2=None, 
-            torch_dtype=dtype)
+            torch_dtype=dtype,
+            local_files_only=True)
         pipe_instance.transformer = transformer
         pipe_instance.text_encoder_2 = text_encoder_2
         

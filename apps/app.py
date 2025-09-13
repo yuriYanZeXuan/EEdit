@@ -18,8 +18,8 @@ import importlib
 from MyCodes import MyFluxForward
 import types
 
-# --- Model Loading (adapted from inpaint_gen.py) ---
-# Use a global variable to cache the loaded model
+# --- Global Settings & Model Pre-loading ---
+WEIGHTS_DIR = "/mnt/tidalfs-bdsz01/usr/tusen/yanzexuan/weight/flux-fill"
 pipe = None
 
 def load_models(weights_dir, dtype=torch.bfloat16):
@@ -30,7 +30,7 @@ def load_models(weights_dir, dtype=torch.bfloat16):
 
     print("Loading models...")
     try:
-        from MyCodes.FluxTransformer2DModel import FluxTransformer2DModel
+        from MyCodes.FluxTransformer2DModel_PREDEFINE import FluxTransformer2DModel
         transformer = FluxTransformer2DModel.from_pretrained(
             weights_dir,
             subfolder="transformer",
@@ -62,15 +62,15 @@ def load_models(weights_dir, dtype=torch.bfloat16):
         return None
 
 # --- Image Generation (adapted from inpaint_gen.py) ---
-def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_steps, weights_dir):
+def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_steps):
+    global pipe
     try:
         print("--- [START] Image Generation ---")
         
-        print("Step 1: Loading models...")
-        pipe = load_models(weights_dir)
+        print("Step 1: Checking if models are loaded...")
         if pipe is None:
-            raise gr.Error("Failed to load models. Check the weights directory path and console for specific errors.")
-        print("Step 1: Models loaded successfully.")
+            raise gr.Error("Models are not loaded. Please check the console for errors during startup.")
+        print("Step 1: Models are ready.")
 
         print("Step 2: Processing inputs...")
         if input_dict["background"] is None:
@@ -179,11 +179,6 @@ with gr.Blocks() as demo:
         with gr.Column():
             image_input = gr.ImageEditor(label="Image with Mask", type="numpy")
             prompt_input = gr.Textbox(label="Prompt", placeholder="Enter your prompt here...")
-            weights_dir_input = gr.Textbox(
-                label="Weights Directory", 
-                value="/path/to/your/weights",  # IMPORTANT: User must change this path
-                placeholder="Enter the absolute path to the model weights directory"
-            )
             generate_button = gr.Button("Generate")
         with gr.Column():
             image_output = gr.Image(label="Output Image")
@@ -201,10 +196,11 @@ with gr.Blocks() as demo:
             strength_slider,
             mask_timestep_slider,
             steps_slider,
-            weights_dir_input
         ],
         outputs=image_output
     )
 
 if __name__ == "__main__":
+    # Pre-load the models on startup
+    load_models(WEIGHTS_DIR)
     demo.launch(share=True)

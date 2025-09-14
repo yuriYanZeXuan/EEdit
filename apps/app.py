@@ -11,15 +11,15 @@ import traceback
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from cache_functions import *
-from MyCodes.pipeline_flux_fill import FluxFillPipeline
+from MyCodes.MyFluxInpaintPipeline import FluxPipeline
 from transformers import T5EncoderModel
 from diffusers.utils import load_image
 import importlib
-from MyCodes import MyFluxForwardFill # Import the new forward pass
+from MyCodes import MyFluxForward # Import the new forward pass
 import types
 
 # --- Global Settings & Model Pre-loading ---
-WEIGHTS_DIR = "/mnt/tidalfs-bdsz01/usr/tusen/yanzexuan/weight/flux-fill"
+WEIGHTS_DIR = "/mnt/tidalfs-bdsz01/usr/tusen/yanzexuan/weight/flux"
 pipe = None
 
 def load_models(weights_dir, dtype=torch.bfloat16):
@@ -43,7 +43,7 @@ def load_models(weights_dir, dtype=torch.bfloat16):
             torch_dtype=dtype,
             local_files_only=True)
 
-        pipe_instance = FluxFillPipeline.from_pretrained(
+        pipe_instance = FluxPipeline.from_pretrained(
             weights_dir, 
             transformer=None, 
             text_encoder_2=None, 
@@ -53,7 +53,7 @@ def load_models(weights_dir, dtype=torch.bfloat16):
         pipe_instance.text_encoder_2 = text_encoder_2
         
         # Apply the new, compatible forward pass for the flux-fill model
-        pipe_instance.transformer.forward = types.MethodType(MyFluxForwardFill.forward, pipe_instance.transformer)
+        pipe_instance.transformer.forward = types.MethodType(MyFluxForward.forward, pipe_instance.transformer)
         pipe_instance.to('cuda')
         pipe = pipe_instance
         print("Models loaded successfully.")

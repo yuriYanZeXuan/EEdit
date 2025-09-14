@@ -1171,7 +1171,11 @@ class FluxFillPipeline(
                         init_latents_proper, torch.tensor([noise_timestep]), noise
                     )
                 if i<mask_timestep:
-                    latents = (1 - init_mask) * init_latents_proper + init_mask * latents
+                    # The `init_mask` has 256 channels for the transformer input, but we need a broadcastable
+                    # mask for compositing. Taking the mean across the channel dimension creates a
+                    # broadcastable mask of shape [B, N, 1] while preserving the binary mask values.
+                    compositing_mask = init_mask.mean(dim=-1, keepdim=True)
+                    latents = (1 - compositing_mask) * init_latents_proper + compositing_mask * latents
 
 
                 if latents.dtype != latents_dtype:

@@ -6,6 +6,7 @@ import os
 import sys
 from pathlib import Path
 import traceback
+import time
 
 # Add project root to sys.path to allow imports from other directories
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -63,10 +64,11 @@ def load_models(weights_dir, dtype=torch.bfloat16):
         return None
 
 # --- Image Generation (adapted from inpaint_gen.py) ---
-def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_steps, use_rf_inversion, eta, gamma, start_timestep, stop_timestep):
+def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_steps, use_rf_inversion, eta, gamma, start_timestep, stop_timestep, use_cache):
     global pipe
     try:
         print("--- [START] Image Generation ---")
+        start_time = time.time()
         
         print("Step 1: Checking if models are loaded...")
         if pipe is None:
@@ -96,7 +98,7 @@ def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_st
 
         # Using default parameters from cache_configs.json and allowing some to be controlled by UI
         param = {
-            "use_cache": True,
+            "use_cache": use_cache,
             "num_inference_steps": int(num_inference_steps),
             "cascade_num": 3,
             "fresh_ratio": 0.1,
@@ -128,7 +130,7 @@ def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_st
         current['edit_idx_merged'] = convert_to_cache_index(edit_idx, edit_base=param.get('edit_base', 2), bonus_ratio=param.get('bonus_ratio', 0.8), height=height, width=width)
         current['edit_idx_merged'] = current['edit_idx_merged'].to("cuda")
 
-        if cache_type == 'ours_predefine':
+        if cache_type == 'ours_predefine' and use_cache:
             predefine_cache_fresh_indices(cache_dic, current)
         print("Step 3: Cache initialized successfully.")
 
@@ -141,7 +143,7 @@ def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_st
 
         print("Step 4: Calling the generation pipeline...")
         torch.manual_seed(42)
-        res = pipe(
+        res = pipe.gen(
             prompt=prompt,
             image=main_image,
             mask_image=mask_image,
@@ -161,8 +163,11 @@ def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_st
         )
         print("Step 4: Generation pipeline finished.")
         
-        print("--- [SUCCESS] Image Generation Complete ---")
-        return res.images[0]
+        end_time = time.time()
+        inference_time = end_time - start_time
+        
+        print(f"--- [SUCCESS] Image Generation Complete in {inference_time:.2f}s ---")
+        return res.images[0], f"Inference Time: {inference_time:.2f} seconds"
     except Exception as e:
         print("--- [ERROR] An error occurred during generation ---")
         traceback.print_exc()
@@ -180,8 +185,10 @@ with gr.Blocks() as demo:
             generate_button = gr.Button("Generate")
         with gr.Column():
             image_output = gr.Image(label="Output Image")
+            time_output = gr.Textbox(label="Status", interactive=False)
     
     with gr.Accordion("Advanced Settings", open=True):
+        use_cache_checkbox = gr.Checkbox(label="Use Cache", value=True)
         use_rf_inversion_checkbox = gr.Checkbox(label="Use RF Inversion (Recommended)", value=True)
         strength_slider = gr.Slider(minimum=0.0, maximum=1.0, value=1.0, step=0.01, label="Strength")
         eta_slider = gr.Slider(minimum=0.0, maximum=2.0, value=0.7, step=0.1, label="Eta (Inversion Guidance)")
@@ -204,8 +211,9 @@ with gr.Blocks() as demo:
             gamma_slider,
             start_timestep_slider,
             stop_timestep_slider,
+            use_cache_checkbox,
         ],
-        outputs=image_output
+        outputs=[image_output, time_output]
     )
 
 if __name__ == "__main__":

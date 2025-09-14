@@ -11,7 +11,7 @@ import traceback
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from cache_functions import *
-from MyCodes.MyFluxInpaintPipeline import FluxPipeline
+from MyCodes.MyFluxInpaintPipeline import FluxInpaintPipeline
 from transformers import T5EncoderModel
 from diffusers.utils import load_image
 import importlib
@@ -43,7 +43,7 @@ def load_models(weights_dir, dtype=torch.bfloat16):
             torch_dtype=dtype,
             local_files_only=True)
 
-        pipe_instance = FluxPipeline.from_pretrained(
+        pipe_instance = FluxInpaintPipeline.from_pretrained(
             weights_dir, 
             transformer=None, 
             text_encoder_2=None, 

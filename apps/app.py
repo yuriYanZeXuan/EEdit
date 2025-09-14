@@ -109,6 +109,11 @@ def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_st
             "cache_type": "ours_predefine"
         }
 
+        # If cache is disabled, also disable step skipping for a true baseline measurement.
+        if not use_cache:
+            param['inv_skip'] = 1
+            print("Cache is disabled. Forcing inv_skip to 1 for baseline performance measurement.")
+
         cache_type = param['cache_type']
         ratio_scheduler = 'constant'
         use_attn_map = False
@@ -194,7 +199,7 @@ with gr.Blocks() as demo:
         eta_slider = gr.Slider(minimum=0.0, maximum=2.0, value=0.7, step=0.1, label="Eta (Inversion Guidance)")
         gamma_slider = gr.Slider(minimum=0.0, maximum=2.0, value=0.7, step=0.1, label="Gamma (Inversion Noise)")
         start_timestep_slider = gr.Slider(minimum=0, maximum=50, value=0, step=1, label="Start Timestep (Inversion)")
-        stop_timestep_slider = gr.Slider(minimum=0, maximum=50, value=6, step=1, label="Stop Timestep (Inversion)")
+        stop_timestep_slider = gr.Slider(minimum=0, maximum=50, value=3, step=1, label="Stop Timestep (Inversion)")
         mask_timestep_slider = gr.Slider(minimum=0, maximum=50, value=18, step=1, label="Mask Timestep (Constraint)")
         steps_slider = gr.Slider(minimum=10, maximum=100, value=28, step=1, label="Number of Inference Steps")
 

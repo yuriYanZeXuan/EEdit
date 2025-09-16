@@ -79,14 +79,44 @@ def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_st
         print("Step 1: Models are ready.")
 
         print("Step 2: Processing inputs...")
-        if input_dict["background"] is None:
-            raise gr.Error("Please upload an image.")
-        if input_dict["layers"] is None or len(input_dict["layers"]) == 0:
-            raise gr.Error("Please draw a mask on the image.")
+        # --- [OPTIMIZATION] ---
+        # Prioritize loading the image from the server-side path if it exists.
+        # This avoids the slow re-upload from the client.
+        if cached_image_path_state and os.path.exists(cached_image_path_state):
+            print(f"Loading image directly from server path: {cached_image_path_state}")
+            main_image = Image.open(cached_image_path_state).convert("RGB")
+            
+            # Launder the image to strip metadata, mimicking a user upload.
+            buffer = BytesIO()
+            main_image.save(buffer, format="PNG")
+            buffer.seek(0)
+            main_image = Image.open(buffer)
+            
+            # Since we loaded from cache, the mask must be from the user's drawing on the client.
+            if input_dict["layers"] is None or len(input_dict["layers"]) == 0:
+                raise gr.Error("Please draw a mask on the image.")
+            mask_layer = input_dict["layers"][0]
 
-        main_image = Image.fromarray(input_dict["background"]).convert("RGB")
+        # Fallback to using the uploaded image data if no valid server path is available.
+        else:
+            if input_dict["background"] is None:
+                raise gr.Error("Please upload an image.")
+            if input_dict["layers"] is None or len(input_dict["layers"]) == 0:
+                raise gr.Error("Please draw a mask on the image.")
+            main_image = Image.fromarray(input_dict["background"]).convert("RGB")
+            mask_layer = input_dict["layers"][0]
+
+        # Ensure image dimensions are multiples of 16 for model compatibility.
+        w, h = main_image.size
+        new_w, new_h = w, h
+        if new_w % 16 != 0:
+            new_w = new_w - (new_w % 16)
+        if new_h % 16 != 0:
+            new_h = new_h - (new_h % 16)
+        if (w, h) != (new_w, new_h):
+            print(f"Adjusting image size from {w}x{h} to {new_w}x{new_h} for model compatibility.")
+            main_image = main_image.resize((new_w, new_h), Image.Resampling.LANCZOS)
         
-        mask_layer = input_dict["layers"][0]
         # Check if the mask is empty (all alpha values are 0)
         if np.all(mask_layer[:, :, 3] == 0):
              raise gr.Error("The drawn mask is empty. Please draw on the area you want to inpaint.")

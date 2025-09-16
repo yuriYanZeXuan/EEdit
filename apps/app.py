@@ -184,7 +184,7 @@ def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_st
 # --- New Helper Functions ---
 def load_latest_image():
     """Loads the most recent image from the cache directory."""
-    cache_dir = "/mnt/tidalfs-bdsz01/usr/tusen/yanzexuan/demo/cache/thumbnails"
+    cache_dir = "/mnt/tidalfs-bdsz01/usr/tusen/yanzexuan/demo/history/images"
     try:
         if not os.path.isdir(cache_dir):
             raise FileNotFoundError(f"Cache directory does not exist: {cache_dir}")
@@ -197,6 +197,20 @@ def load_latest_image():
         print(f"Loading latest image: {latest_file}")
         
         img = Image.open(latest_file).convert("RGB")
+
+        w, h = img.size
+        new_w, new_h = w, h
+        
+        # Ensure image dimensions are multiples of 16 for model compatibility.
+        if new_w % 16 != 0:
+            new_w = new_w - (new_w % 16)
+        if new_h % 16 != 0:
+            new_h = new_h - (new_h % 16)
+            
+        if (w, h) != (new_w, new_h):
+            print(f"Adjusting image size from {w}x{h} to {new_w}x{new_h} for model compatibility.")
+            img = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+
         return np.array(img)
     except Exception as e:
         print(f"Error loading latest image: {e}")

@@ -7,6 +7,8 @@ import sys
 from pathlib import Path
 import traceback
 import time
+import glob
+from datetime import datetime
 
 # Add project root to sys.path to allow imports from other directories
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -112,6 +114,7 @@ def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_st
         # If cache is disabled, also disable step skipping for a true baseline measurement.
         if not use_cache:
             param['inv_skip'] = 1
+            param['fresh_threshold'] = 1
             print("Cache is disabled. Forcing inv_skip to 1 for baseline performance measurement.")
 
         cache_type = param['cache_type']
@@ -178,6 +181,60 @@ def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_st
         traceback.print_exc()
         raise gr.Error(f"An error occurred during the generation process. Please check the console for details. Error: {e}")
 
+# --- New Helper Functions ---
+def load_latest_image():
+    """Loads the most recent image from the cache directory."""
+    cache_dir = "/mnt/tidalfs-bdsz01/usr/tusen/yanzexuan/demo/cache/thumbnails"
+    try:
+        if not os.path.isdir(cache_dir):
+            raise FileNotFoundError(f"Cache directory does not exist: {cache_dir}")
+        
+        list_of_files = glob.glob(os.path.join(cache_dir, '*'))
+        if not list_of_files:
+            raise FileNotFoundError(f"No files found in cache directory: {cache_dir}")
+            
+        latest_file = max(list_of_files, key=os.path.getctime)
+        print(f"Loading latest image: {latest_file}")
+        
+        img = Image.open(latest_file).convert("RGB")
+        return np.array(img)
+    except Exception as e:
+        print(f"Error loading latest image: {e}")
+        traceback.print_exc()
+        raise gr.Error(f"Failed to load image from cache. Error: {e}")
+
+def save_image(image_to_save, save_path):
+    """Saves the generated image to a user-specified local path."""
+    if image_to_save is None:
+        gr.Warning("No image available to save.")
+        return "No image generated yet. Please generate an image first."
+        
+    if not save_path or not save_path.strip():
+        gr.Warning("Please enter a valid file path.")
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        return f"[{timestamp}] Please enter a file path in the 'Save to Path' box."
+
+    try:
+        # Ensure the output directory exists
+        output_dir = os.path.dirname(save_path)
+        if output_dir:
+            os.makedirs(output_dir, exist_ok=True)
+            
+        # Ensure the filename ends with .png
+        if not save_path.lower().endswith(('.png', '.jpg', '.jpeg')):
+             gr.Warning("File does not have a standard image extension. Appending .png")
+             save_path += ".png"
+
+        img = Image.fromarray(image_to_save)
+        img.save(save_path)
+        
+        print(f"Image saved to: {save_path}")
+        return f"Image successfully saved to: {save_path}"
+    except Exception as e:
+        print(f"Error saving image: {e}")
+        traceback.print_exc()
+        raise gr.Error(f"Failed to save image. Please check the path and permissions. Error: {e}")
+
 # --- Gradio Interface ---
 with gr.Blocks() as demo:
     gr.Markdown("# FLUX Inpainting with Cache Control")
@@ -187,10 +244,14 @@ with gr.Blocks() as demo:
         with gr.Column():
             image_input = gr.ImageEditor(label="Image with Mask", type="numpy")
             prompt_input = gr.Textbox(label="Prompt", placeholder="Enter your prompt here...")
-            generate_button = gr.Button("Generate")
+            with gr.Row():
+                generate_button = gr.Button("Generate", variant="primary")
+                load_cache_button = gr.Button("Load Latest from Cache")
         with gr.Column():
             image_output = gr.Image(label="Output Image")
             time_output = gr.Textbox(label="Status", interactive=False)
+            save_path_input = gr.Textbox(label="Save to Path", placeholder="Enter full path, e.g., /home/user/output.png", interactive=True)
+            save_button = gr.Button("Save Image")
     
     with gr.Accordion("Advanced Settings", open=True):
         use_cache_checkbox = gr.Checkbox(label="Use Cache", value=True)
@@ -219,6 +280,18 @@ with gr.Blocks() as demo:
             use_cache_checkbox,
         ],
         outputs=[image_output, time_output]
+    )
+
+    load_cache_button.click(
+        fn=load_latest_image,
+        inputs=[],
+        outputs=[image_input]
+    )
+    
+    save_button.click(
+        fn=save_image,
+        inputs=[image_output, save_path_input],
+        outputs=[time_output]
     )
 
 if __name__ == "__main__":

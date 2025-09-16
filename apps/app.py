@@ -9,6 +9,7 @@ import traceback
 import time
 import glob
 from datetime import datetime
+from io import BytesIO
 
 # Add project root to sys.path to allow imports from other directories
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -197,6 +198,14 @@ def load_latest_image():
         print(f"Loading latest image: {latest_file}")
         
         img = Image.open(latest_file).convert("RGB")
+
+        # "Launder" the image by saving and reloading it from an in-memory buffer.
+        # This strips potentially problematic metadata (e.g., EXIF orientation tags)
+        # that can cause model crashes, making it behave like a fresh user upload.
+        buffer = BytesIO()
+        img.save(buffer, format="PNG") # Use a lossless format to avoid quality loss
+        buffer.seek(0)
+        img = Image.open(buffer)
 
         w, h = img.size
         new_w, new_h = w, h

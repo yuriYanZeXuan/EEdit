@@ -67,7 +67,7 @@ def load_models(weights_dir, dtype=torch.bfloat16):
         return None
 
 # --- Image Generation (adapted from inpaint_gen.py) ---
-def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_steps, use_rf_inversion, eta, gamma, start_timestep, stop_timestep, use_cache):
+def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_steps, use_rf_inversion, eta, gamma, start_timestep, stop_timestep, use_cache, cached_image_path_state):
     global pipe
     try:
         print("--- [START] Image Generation ---")
@@ -176,7 +176,8 @@ def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_st
         inference_time = end_time - start_time
         
         print(f"--- [SUCCESS] Image Generation Complete in {inference_time:.2f}s ---")
-        return res.images[0], f"Inference Time: {inference_time:.2f} seconds"
+        # Return the result and None to clear the cached image path state after use
+        return res.images[0], f"Inference Time: {inference_time:.2f} seconds", None
     except Exception as e:
         print("--- [ERROR] An error occurred during generation ---")
         traceback.print_exc()
@@ -207,24 +208,13 @@ def load_latest_image():
         buffer.seek(0)
         img = Image.open(buffer)
 
-        w, h = img.size
-        new_w, new_h = w, h
-        
-        # Ensure image dimensions are multiples of 16 for model compatibility.
-        if new_w % 16 != 0:
-            new_w = new_w - (new_w % 16)
-        if new_h % 16 != 0:
-            new_h = new_h - (new_h % 16)
-            
-        if (w, h) != (new_w, new_h):
-            print(f"Adjusting image size from {w}x{h} to {new_w}x{new_h} for model compatibility.")
-            img = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
-
-        return np.array(img)
+        # Return both the image data for display and the file path for state tracking
+        return np.array(img), latest_file
     except Exception as e:
         print(f"Error loading latest image: {e}")
         traceback.print_exc()
-        raise gr.Error(f"Failed to load image from cache. Error: {e}")
+        # Return None for both outputs on error
+        return None, None
 
 def save_image(image_to_save, save_path):
     """Saves the generated image to a user-specified local path."""
@@ -262,6 +252,9 @@ def save_image(image_to_save, save_path):
 with gr.Blocks() as demo:
     gr.Markdown("# FLUX Inpainting with Cache Control")
     gr.Markdown("Upload an image, paint a mask, provide a prompt, and adjust the parameters to generate an inpainted image.")
+
+    # Add a State component to store the server-side path of the cached image
+    cached_image_path_state = gr.State(None)
 
     with gr.Row():
         with gr.Column():
@@ -301,16 +294,22 @@ with gr.Blocks() as demo:
             start_timestep_slider,
             stop_timestep_slider,
             use_cache_checkbox,
+            cached_image_path_state, # Pass the state as input
         ],
-        outputs=[image_output, time_output]
+        outputs=[image_output, time_output, cached_image_path_state] # Clear the state after use
     )
 
     load_cache_button.click(
         fn=load_latest_image,
         inputs=[],
-        outputs=[image_input]
+        outputs=[image_input, cached_image_path_state] # Update both image and state
     )
     
+    # When a user uploads a new image, clear the cached path state
+    # to ensure the uploaded image is used, not the old cached one.
+    image_input.upload(lambda: None, outputs=cached_image_path_state)
+    image_input.clear(lambda: None, outputs=cached_image_path_state)
+
     save_button.click(
         fn=save_image,
         inputs=[image_output, save_path_input],

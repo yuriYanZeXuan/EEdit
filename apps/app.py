@@ -10,6 +10,7 @@ import time
 import glob
 from datetime import datetime
 from io import BytesIO
+import tempfile
 
 # Add project root to sys.path to allow imports from other directories
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -246,6 +247,24 @@ def load_latest_image():
         # Return None for both outputs on error
         return None, None
 
+def save_image_for_download(image_to_save):
+    """Saves the image to a temporary file and returns the path."""
+    if image_to_save is None:
+        gr.Warning("No image available to save.")
+        return None
+
+    try:
+        # Create a temporary file with a .png extension
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmp:
+            img = Image.fromarray(image_to_save)
+            img.save(tmp.name)
+            print(f"Image saved to temporary file: {tmp.name}")
+            return tmp.name
+    except Exception as e:
+        print(f"Error creating temporary file for download: {e}")
+        traceback.print_exc()
+        raise gr.Error(f"Failed to prepare image for download. Error: {e}")
+
 # --- Gradio Interface ---
 with gr.Blocks() as demo:
     gr.Markdown("# FLUX Inpainting with Cache Control")
@@ -264,7 +283,10 @@ with gr.Blocks() as demo:
         with gr.Column():
             image_output = gr.Image(label="Output Image")
             time_output = gr.Textbox(label="Status", interactive=False)
-    
+            with gr.Row():
+                save_button = gr.Button("Save Image")
+            download_output = gr.File(label="Download Image", visible=False)
+
     with gr.Accordion("Advanced Settings", open=True):
         use_cache_checkbox = gr.Checkbox(label="Use Cache", value=True)
         use_rf_inversion_checkbox = gr.Checkbox(label="Use RF Inversion (Recommended)", value=True)
@@ -306,6 +328,20 @@ with gr.Blocks() as demo:
     image_input.upload(lambda: None, outputs=cached_image_path_state)
     image_input.clear(lambda: None, outputs=cached_image_path_state)
 
+    def show_download(filepath):
+        if filepath:
+            return gr.update(visible=True, value=filepath)
+        return gr.update(visible=False)
+
+    save_button.click(
+        fn=save_image_for_download,
+        inputs=[image_output],
+        outputs=[download_output]
+    ).then(
+        fn=show_download,
+        inputs=[download_output],
+        outputs=[download_output]
+    )
 
 if __name__ == "__main__":
     # Pre-load the models on startup

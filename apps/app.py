@@ -246,38 +246,6 @@ def load_latest_image():
         # Return None for both outputs on error
         return None, None
 
-def save_image(image_to_save, save_path):
-    """Saves the generated image to a user-specified local path."""
-    if image_to_save is None:
-        gr.Warning("No image available to save.")
-        return "No image generated yet. Please generate an image first."
-        
-    if not save_path or not save_path.strip():
-        gr.Warning("Please enter a valid file path.")
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        return f"[{timestamp}] Please enter a file path in the 'Save to Path' box."
-
-    try:
-        # Ensure the output directory exists
-        output_dir = os.path.dirname(save_path)
-        if output_dir:
-            os.makedirs(output_dir, exist_ok=True)
-            
-        # Ensure the filename ends with .png
-        if not save_path.lower().endswith(('.png', '.jpg', '.jpeg')):
-             gr.Warning("File does not have a standard image extension. Appending .png")
-             save_path += ".png"
-
-        img = Image.fromarray(image_to_save)
-        img.save(save_path)
-        
-        print(f"Image saved to: {save_path}")
-        return f"Image successfully saved to: {save_path}"
-    except Exception as e:
-        print(f"Error saving image: {e}")
-        traceback.print_exc()
-        raise gr.Error(f"Failed to save image. Please check the path and permissions. Error: {e}")
-
 # --- Gradio Interface ---
 with gr.Blocks() as demo:
     gr.Markdown("# FLUX Inpainting with Cache Control")
@@ -296,8 +264,6 @@ with gr.Blocks() as demo:
         with gr.Column():
             image_output = gr.Image(label="Output Image")
             time_output = gr.Textbox(label="Status", interactive=False)
-            save_path_input = gr.Textbox(label="Save to Path", placeholder="Enter full path, e.g., /home/user/output.png", interactive=True)
-            save_button = gr.Button("Save Image")
     
     with gr.Accordion("Advanced Settings", open=True):
         use_cache_checkbox = gr.Checkbox(label="Use Cache", value=True)
@@ -340,11 +306,6 @@ with gr.Blocks() as demo:
     image_input.upload(lambda: None, outputs=cached_image_path_state)
     image_input.clear(lambda: None, outputs=cached_image_path_state)
 
-    save_button.click(
-        fn=save_image,
-        inputs=[image_output, save_path_input],
-        outputs=[time_output]
-    )
 
 if __name__ == "__main__":
     # Pre-load the models on startup

@@ -68,7 +68,7 @@ def load_models(weights_dir, dtype=torch.bfloat16):
         return None
 
 # --- Image Generation (adapted from inpaint_gen.py) ---
-def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_steps, use_rf_inversion, eta, gamma, start_timestep, stop_timestep, use_cache, cached_image_path_state):
+def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_steps, use_rf_inversion, eta, gamma, start_timestep, stop_timestep, use_cache, cached_image_path_state, invert_mask):
     global pipe
     try:
         print("--- [START] Image Generation ---")
@@ -124,6 +124,12 @@ def generate_image(input_dict, prompt, strength, mask_timestep, num_inference_st
 
         # The mask is the drawn layer. It's RGBA, we take the alpha channel.
         mask_array = mask_layer[:, :, 3]  # Alpha channel
+        
+        # Invert mask if the user wants to edit the background
+        if invert_mask:
+            print("Inverting mask to edit the background.")
+            mask_array = 255 - mask_array
+
         mask_image = Image.fromarray(mask_array).convert("RGB")
         print("Step 2: Inputs processed successfully.")
 
@@ -289,6 +295,7 @@ with gr.Blocks() as demo:
 
     with gr.Accordion("Advanced Settings", open=True):
         use_cache_checkbox = gr.Checkbox(label="Use Cache", value=True)
+        invert_mask_checkbox = gr.Checkbox(label="Invert Mask (Edit Background)", value=False)
         use_rf_inversion_checkbox = gr.Checkbox(label="Use RF Inversion (Recommended)", value=True)
         strength_slider = gr.Slider(minimum=0.0, maximum=1.0, value=1.0, step=0.01, label="Strength")
         eta_slider = gr.Slider(minimum=0.0, maximum=2.0, value=0.7, step=0.1, label="Eta (Inversion Guidance)")
@@ -313,6 +320,7 @@ with gr.Blocks() as demo:
             stop_timestep_slider,
             use_cache_checkbox,
             cached_image_path_state, # Pass the state as input
+            invert_mask_checkbox,
         ],
         outputs=[image_output, time_output, cached_image_path_state] # Clear the state after use
     )
